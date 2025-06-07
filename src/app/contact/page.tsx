@@ -1,3 +1,4 @@
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -33,7 +34,7 @@ export default function ContactPage() {
             <div className="space-y-4">
               <div className="flex items-center gap-3">
                 <Mail className="w-6 h-6 text-accent" />
-                <span>contact@throneadvisor.example.com</span>
+                <span>contact@restroomreviews.work</span>
               </div>
               <div className="flex items-center gap-3">
                 <Phone className="w-6 h-6 text-accent" />
