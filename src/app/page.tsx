@@ -17,7 +17,7 @@ export default function Home() {
       />
       
       <section className="max-w-2xl">
-        <h1 className="text-4xl font-bold mb-6 text-primary className="text-4xl font-bold mb-6 text-primary"">Restroom Reviews</h1>
+        <h1 className="text-4xl font-bold mb-6 text-primary">Restroom Reviews</h1>
         <p className="text-lg text-foreground/80 leading-relaxed">
           Your trusted guide to public restrooms. We believe everyone deserves a clean, comfortable, and safe restroom experience.
           Help us map out the best (and worst!) thrones in town. Submit your reviews and nominate businesses that need a little R&R (Restroom Renovation) for our "Clean It Up" program!
