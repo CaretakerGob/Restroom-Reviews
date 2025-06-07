@@ -1,6 +1,6 @@
 'use client';
 
-import { useFormState } from 'react-dom';
+import { useActionState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { nominationSchema, type NominationFormValues } from '@/schemas/nominationSchema';
@@ -12,7 +12,6 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { useEffect } from 'react';
 import { useToast } from '@/hooks/use-toast';
 import { useRouter } from 'next/navigation';
 
@@ -22,7 +21,7 @@ const initialFormState: NominationSubmissionState = {
 };
 
 const NominationForm = () => {
-  const [state, formAction] = useFormState(submitNominationAction, initialFormState);
+  const [state, formAction] = useActionState(submitNominationAction, initialFormState);
   const { toast } = useToast();
   const router = useRouter();
 

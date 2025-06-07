@@ -1,6 +1,6 @@
 'use client';
 
-import { useFormState } from 'react-dom';
+import { useActionState, useEffect } from 'react';
 import { useForm, Controller, type SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { reviewSchema, type ReviewFormValues } from '@/schemas/reviewSchema';
@@ -14,7 +14,6 @@ import { Checkbox } from '@/components/ui/checkbox';
 import StarRating from '@/components/ui/StarRating';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { useEffect } from 'react';
 import { useToast } from '@/hooks/use-toast';
 import { useRouter } from 'next/navigation';
 
@@ -24,7 +23,7 @@ const initialFormState: ReviewSubmissionState = {
 };
 
 const ReviewForm = () => {
-  const [state, formAction] = useFormState(submitReviewAction, initialFormState);
+  const [state, formAction] = useActionState(submitReviewAction, initialFormState);
   const { toast } = useToast();
   const router = useRouter();
 
