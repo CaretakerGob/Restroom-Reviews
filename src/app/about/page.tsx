@@ -6,7 +6,7 @@ export default function AboutPage() {
     <div className="space-y-8">
       <Card className="shadow-lg">
         <CardHeader>
-          <CardTitle className="text-4xl font-headline text-primary text-center">About Throne Advisor</CardTitle>
+          <CardTitle className="text-4xl font-headline text-primary text-center">About Restroom Reviews</CardTitle>
         </CardHeader>
         <CardContent className="space-y-6 text-lg text-foreground/80 leading-relaxed">
           <div className="flex flex-col md:flex-row items-center gap-8">
