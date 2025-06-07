@@ -20,7 +20,7 @@ export default function AboutPage() {
             />
             <div className="md:w-1/2">
               <p>
-                Throne Advisor was born from a simple, universal need: finding a clean, safe, and comfortable public restroom.
+                Restroom Reviews was born from a simple, universal need: finding a clean, safe, and comfortable public restroom.
                 We've all been there – that desperate search, the anxiety of the unknown, the relief of finding a decent facility, or the dismay of a… less-than-stellar experience.
               </p>
               <p className="mt-4">
@@ -43,7 +43,7 @@ export default function AboutPage() {
 
           <h2 className="text-3xl font-headline text-secondary pt-6">How It Works</h2>
           <p>
-            Throne Advisor is powered by you! Users like yourself can:
+            Restroom Reviews is powered by you! Users like yourself can:
           </p>
           <ul className="list-disc list-inside space-y-2 pl-4">
             <li><strong>Submit Reviews:</strong> Share your detailed experiences, rating restrooms on key aspects like cleanliness, smell, comfort, supplies, and security.</li>

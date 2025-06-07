@@ -7,8 +7,8 @@ export default function Home() {
   return (
     <div className="flex flex-col items-center text-center space-y-12 py-12">
       <Image 
-        src="https://placehold.co/300x150.png?text=Throne+Advisor+Logo" 
-        alt="Throne Advisor Logo Placeholder" 
+        src="https://placehold.co/300x150.png?text=Restroom+Reviews+Logo" 
+        alt="Restroom Reviews Logo Placeholder" 
         width={300} 
         height={150} 
         data-ai-hint="modern logo"
@@ -41,7 +41,7 @@ export default function Home() {
       </section>
 
       <section className="max-w-2xl pt-8">
-        <h2 className="text-3xl font-bold mb-4 text-primary">Why Throne Advisor?</h2>
+        <h2 className="text-3xl font-bold mb-4 text-primary">Why Restroom Reviews?</h2>
         <div className="grid md:grid-cols-2 gap-6 text-left">
           <div className="p-4 bg-card rounded-lg shadow">
             <h3 className="font-bold text-xl mb-2 text-accent">Find Comfort</h3>

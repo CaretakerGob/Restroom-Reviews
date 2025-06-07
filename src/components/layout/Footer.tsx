@@ -9,7 +9,7 @@ const Footer = () => {
           <Link href="/contact" className="hover:text-accent transition-colors">Contact</Link>
           <Link href="/porcelain-rule" className="hover:text-accent transition-colors">The Porcelain Rule</Link>
         </div>
-        <p>&copy; {new Date().getFullYear()} Throne Advisor. All rights reserved.</p>
+        <p>&copy; {new Date().getFullYear()} Restroom Reviews. All rights reserved.</p>
       </div>
     </footer>
   );

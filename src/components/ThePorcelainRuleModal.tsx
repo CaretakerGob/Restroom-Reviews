@@ -30,7 +30,7 @@ const ThePorcelainRuleModal = () => {
           <p><strong>Photos (Optional but Encouraged):</strong> A picture is worth a thousand words. If you upload photos, ensure they are relevant and DO NOT include any people for privacy reasons.</p>
           <p><strong>Respect Privacy:</strong> Do not share personal information about restroom staff or other patrons.</p>
           <p><strong>Constructive Criticism for Nominations:</strong> When nominating a business for the "Clean It Up" program, be clear and constructive about why they need improvement. Help us help them!</p>
-          <p>By submitting a review or nomination, you agree to abide by The Porcelain Rule. Let's keep Throne Advisor a helpful and respectful community!</p>
+          <p>By submitting a review or nomination, you agree to abide by The Porcelain Rule. Let's keep Restroom Reviews a helpful and respectful community!</p>
         </div>
       </DialogContent>
     </Dialog>

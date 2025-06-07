@@ -36,7 +36,7 @@ export default function PorcelainRulePage() {
           <CardTitle className="text-4xl font-headline text-primary">The Porcelain Rule</CardTitle>
           <CardDescription className="text-lg text-foreground/80">
             Our community guidelines for respectful, helpful, and effective reviews and nominations. 
-            Let's keep Throne Advisor a trusted resource!
+            Let's keep Restroom Reviews a trusted resource!
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">
