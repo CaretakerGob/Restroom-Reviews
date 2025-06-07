@@ -1,9 +1,16 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 const Logo = () => {
   return (
-    <Link href="/" className="text-2xl font-headline font-bold text-primary hover:text-primary/90 transition-colors">
-      Restroom Reviews
+    <Link href="/" className="flex items-center">
+      <Image
+        src="/logo.png"
+        alt="Restroom Reviews Logo"
+        width={40}
+        height={40}
+        priority
+      />
     </Link>
   );
 };
