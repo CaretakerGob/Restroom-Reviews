@@ -10,6 +10,7 @@ import { useTheme } from '@/components/ThemeProvider';
 import { useEffect, useState } from 'react';
 
 const navItems = [
+  { href: '/map', label: 'Interactive Map' },
   { href: '/reviews', label: 'Wall of Thrones' },
   { href: '/videos', label: 'Restroom Reels' },
   { href: '/blog', label: 'Flush Journal' },
