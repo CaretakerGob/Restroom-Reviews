@@ -10,7 +10,7 @@ export default function AdminPage() {
         <CardHeader className="text-center">
           <CardTitle className="text-4xl font-headline text-primary">Admin Dashboard</CardTitle>
           <CardDescription className="text-lg text-foreground/80">
-            Manage Throne Advisor: reviews, nominations, site settings, and track our impact.
+            Manage Restroom Reviews: reviews, nominations, site settings, and track our impact.
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">
@@ -105,7 +105,7 @@ export default function AdminPage() {
               <li>View, edit, and delete submitted reviews.</li>
               <li>Approve or reject content before public display.</li>
               <li>Manage "Cleanup Crusade" program nominations and status.</li>
-              <li>Tag locations with a "Cleaned by Throne Advisor" badge.</li>
+              <li>Tag locations with a "Cleaned by Restroom Reviews" badge.</li>
               <li>User management (view, roles, ban).</li>
               <li>Site analytics and reporting.</li>
               <li>Configuration for AI summarization parameters.</li>

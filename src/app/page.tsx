@@ -11,7 +11,7 @@ export default function Home() {
     <div className="flex flex-col items-center text-center space-y-12 py-12">
       <Image 
         src="https://firebasestorage.googleapis.com/v0/b/rotb-companion.firebasestorage.app/o/Restroom%20Reviews%2FLogos%2FR%26R%20LOGO_THREE_sparkle.png?alt=media&token=0960bfdf-0780-4f91-83eb-61bbddb13280"
-        alt="Throne Advisor Official Logo" 
+        alt="Restroom Reviews Official Logo" 
         width={200} 
         height={200} 
         data-ai-hint="company logo"
@@ -20,7 +20,7 @@ export default function Home() {
       />
       
       <section className="max-w-2xl">
-        <h1 className="text-4xl font-bold mb-6 text-primary">Throne Advisor</h1>
+        <h1 className="text-4xl font-bold mb-6 text-primary">Restroom Reviews</h1>
         <p className="text-lg text-foreground/80 leading-relaxed">
           Your trusted guide to public restrooms. We believe everyone deserves a clean, comfortable, and safe restroom experience.
           Help us map out the best (and worst!) thrones in town. Share your stall stories and nominate businesses that need a little R&R (Restroom Renovation) for our "Cleanup Crusade"!
@@ -52,7 +52,7 @@ export default function Home() {
       </section>
 
       <section className="max-w-2xl pt-8">
-        <h2 className="text-3xl font-bold mb-4 text-primary">Why Throne Advisor?</h2>
+        <h2 className="text-3xl font-bold mb-4 text-primary">Why Restroom Reviews?</h2>
         <div className="grid md:grid-cols-2 gap-6 text-left">
           <div className="p-4 bg-card rounded-lg shadow">
             <h3 className="font-bold text-xl mb-2 text-accent">Find Comfort</h3>

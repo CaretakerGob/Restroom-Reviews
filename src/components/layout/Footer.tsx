@@ -25,7 +25,7 @@ const Footer = () => {
             <span className="text-sm font-medium">TikTok</span> {/* Consider a TikTok Lucide icon if/when available or an SVG */}
           </a>
         </div>
-        <p>&copy; {new Date().getFullYear()} Throne Advisor. All rights reserved.</p>
+        <p>&copy; {new Date().getFullYear()} Restroom Reviews. All rights reserved.</p>
       </div>
     </footer>
   );

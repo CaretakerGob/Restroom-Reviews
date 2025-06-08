@@ -31,7 +31,7 @@ const rules = [
 
 const submissionTerms = {
   title: "Content Submission & Usage",
-  description: "By submitting reviews, nominations, or photos ('Submissions'), you agree to the following: 1. You confirm that no identifiable individuals are depicted in any photos you upload, in line with our Photo Submissions rule. 2. You grant Throne Advisor a non-exclusive, royalty-free, worldwide license to use, review, edit, adapt, publish, translate, create derivative works from, distribute, and display your Submissions in any media. 3. You understand that Throne Advisor may review, edit, or remove submissions as deemed necessary to align with our content strategy and community guidelines. We are committed to respecting privacy and these guidelines in all uses of submitted material."
+  description: "By submitting reviews, nominations, or photos ('Submissions'), you agree to the following: 1. You confirm that no identifiable individuals are depicted in any photos you upload, in line with our Photo Submissions rule. 2. You grant Restroom Reviews a non-exclusive, royalty-free, worldwide license to use, review, edit, adapt, publish, translate, create derivative works from, distribute, and display your Submissions in any media. 3. You understand that Restroom Reviews may review, edit, or remove submissions as deemed necessary to align with our content strategy and community guidelines. We are committed to respecting privacy and these guidelines in all uses of submitted material."
 };
 
 export default function PorcelainRulePage() {
@@ -42,7 +42,7 @@ export default function PorcelainRulePage() {
           <CardTitle className="text-4xl font-headline text-primary">The Proper Porcelain Policy</CardTitle>
           <CardDescription className="text-lg text-foreground/80">
             Our community guidelines for respectful, helpful, and effective reviews and nominations. 
-            Let's keep Throne Advisor a trusted resource!
+            Let's keep Restroom Reviews a trusted resource!
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">

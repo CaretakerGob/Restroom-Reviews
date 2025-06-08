@@ -38,8 +38,8 @@ const ThePorcelainRuleModal = () => {
             <p>By submitting reviews, nominations, or photos ("Submissions"), you agree:</p>
             <ul className="list-disc list-inside pl-4 space-y-1">
               <li>You confirm no identifiable individuals are in any photos.</li>
-              <li>You grant Throne Advisor a license to use, review, edit, adapt, publish, and display your Submissions.</li>
-              <li>You understand Throne Advisor may manage submissions according to our content strategy and guidelines.</li>
+              <li>You grant Restroom Reviews a non-exclusive, royalty-free, worldwide license to use, review, edit, adapt, publish, translate, create derivative works from, distribute, and display your Submissions in any media.</li>
+              <li>You understand Restroom Reviews may manage submissions according to our content strategy and guidelines.</li>
             </ul>
             <p className="mt-1">We are committed to respecting privacy and these guidelines in all uses of submitted material.</p>
           </div>
@@ -47,7 +47,7 @@ const ThePorcelainRuleModal = () => {
           <p className="mt-4">
             For full details, please see the <Link href="/porcelain-rule" className="text-primary underline hover:text-accent">full Proper Porcelain Policy page</Link>.
           </p>
-          <p className="font-semibold mt-2">By submitting any content, you agree to abide by The Proper Porcelain Policy in its entirety. Let's keep Throne Advisor a helpful and respectful community!</p>
+          <p className="font-semibold mt-2">By submitting any content, you agree to abide by The Proper Porcelain Policy in its entirety. Let's keep Restroom Reviews a helpful and respectful community!</p>
         </div>
       </DialogContent>
     </Dialog>
