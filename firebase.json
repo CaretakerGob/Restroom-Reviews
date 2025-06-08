@@ -1,16 +1,18 @@
+
 {
   "hosting": {
-    "public": "public",
+    "rewrites": [
+      {
+        "source": "**",
+        "apphosting": {
+          "backendId": "studio"
+        }
+      }
+    ],
     "ignore": [
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
-    ],
-    "rewrites": [
-      {
-        "source": "**",
-        "destination": "/index.html"
-      }
     ]
   }
 }
