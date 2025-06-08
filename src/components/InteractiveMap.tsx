@@ -7,17 +7,6 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import type { Review } from '@/lib/mockReviews';
 import { useState, useEffect } from 'react';
 
-// Perform global Leaflet icon modifications safely and only on the client
-if (typeof window !== 'undefined') {
-  // @ts-ignore
-  delete L.Icon.Default.prototype._getIconUrl;
-  L.Icon.Default.mergeOptions({
-    iconRetinaUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png',
-    iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
-    shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
-  });
-}
-
 interface InteractiveMapProps {
   reviews: Review[];
 }
@@ -26,11 +15,20 @@ const InteractiveMap: React.FC<InteractiveMapProps> = ({ reviews }) => {
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
+    // Perform global Leaflet icon modifications safely and only on the client, once.
+    // @ts-ignore
+    delete L.Icon.Default.prototype._getIconUrl;
+    L.Icon.Default.mergeOptions({
+      iconRetinaUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png',
+      iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
+      shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
+    });
+
     // Defer setting isClient to true to the next event loop tick.
     // This can help with HMR and ensuring the DOM is fully settled.
     const timer = setTimeout(() => {
       setIsClient(true);
-    }, 0);
+    }, 0); 
 
     return () => clearTimeout(timer); // Cleanup the timer if the component unmounts before it fires
   }, []); // Empty dependency array ensures this runs once on mount
