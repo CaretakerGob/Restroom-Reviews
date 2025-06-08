@@ -48,7 +48,7 @@ const Header = () => {
             </Button>
           ))}
           {renderThemeToggle()}
-          <Button asChild>
+          <Button asChild className="bg-[#3C2F2F] text-white hover:bg-[#4A3F3F]">
             <Link href="/admin">Admin</Link>
           </Button>
         </nav>
@@ -67,7 +67,7 @@ const Header = () => {
                     <Link href={item.href}>{item.label}</Link>
                   </Button>
                 ))}
-                <Button asChild className="w-full justify-start">
+                <Button asChild className="w-full justify-start bg-[#3C2F2F] text-white hover:bg-[#4A3F3F]">
                   <Link href="/admin">Admin</Link>
                 </Button>
               </nav>
