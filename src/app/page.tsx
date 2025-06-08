@@ -1,7 +1,9 @@
+
 import { Button } from '@/components/ui/button';
 import ThePorcelainRuleModal from '@/components/ThePorcelainRuleModal';
 import Link from 'next/link';
 import Image from 'next/image';
+import TestimonialSlider from '@/components/TestimonialSlider';
 
 export default function Home() {
   return (
@@ -22,6 +24,10 @@ export default function Home() {
           Your trusted guide to public restrooms. We believe everyone deserves a clean, comfortable, and safe restroom experience.
           Help us map out the best (and worst!) thrones in town. Submit your reviews and nominate businesses that need a little R&R (Restroom Renovation) for our "Clean It Up" program!
         </p>
+      </section>
+
+      <section className="w-full flex justify-center">
+        <TestimonialSlider />
       </section>
 
       <section className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-md">
