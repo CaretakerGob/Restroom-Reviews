@@ -1,12 +1,13 @@
+
 'use client';
 
 import { useActionState, useEffect } from 'react';
-import { useForm, Controller, type SubmitHandler } from 'react-hook-form';
+import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { reviewSchema, type ReviewFormValues } from '@/schemas/reviewSchema';
 import { submitReviewAction, type ReviewSubmissionState } from '@/actions/reviewActions';
 
-import { Button } from '@/components/ui/button';
+import { Button, buttonVariants } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
@@ -16,6 +17,8 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { useToast } from '@/hooks/use-toast';
 import { useRouter } from 'next/navigation';
+import { UploadCloud } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 const initialFormState: ReviewSubmissionState = {
   message: '',
@@ -117,16 +120,13 @@ const ReviewForm = () => {
                       initialValue={field.value as number}
                       onChange={(value) => {
                         setValue(rating.name as keyof ReviewFormValues, value, { shouldValidate: true });
-                         // For useFormState, we need to manually create FormData compatible input
-                        const hiddenInput = document.getElementById(`${rating.name}-hiddenInput`) as HTMLInputElement | null;
+                        const hiddenInput = document.getElementById(\`\${rating.name}-hiddenInput\`) as HTMLInputElement | null;
                         if (hiddenInput) hiddenInput.value = String(value);
                       }}
                     />
                   )}
                 />
-                {/* Hidden input for formAction compatibility */}
-                <input type="hidden" id={`${rating.name}-hiddenInput`} name={rating.name} defaultValue="0" />
-
+                <input type="hidden" id={\`\${rating.name}-hiddenInput\`} name={rating.name} defaultValue="0" />
                 {errors[rating.name as keyof ReviewFormValues] && (
                   <p className="text-sm text-destructive">{errors[rating.name as keyof ReviewFormValues]?.message}</p>
                 )}
@@ -136,10 +136,33 @@ const ReviewForm = () => {
           </div>
           
           <div className="space-y-2">
-            <Label htmlFor="photo">Photo (Optional)</Label>
-            <Input id="photo" type="file" {...register('photo')} accept="image/*" />
-            {errors.photo && <p className="text-sm text-destructive">{errors.photo.message as string}</p>}
-            {state.errors?.photo && <p className="text-sm text-destructive">{state.errors.photo.join(', ')}</p>}
+            <Label>Photo (Optional)</Label>
+            <div className="flex items-center gap-3">
+                <Label
+                    htmlFor="review-photo-input"
+                    className={cn(
+                        buttonVariants({ variant: 'outline' }),
+                        'cursor-pointer'
+                    )}
+                >
+                    <UploadCloud className="mr-2 h-4 w-4" />
+                    Choose File
+                </Label>
+                <Input
+                    id="review-photo-input"
+                    type="file"
+                    {...register('photo')}
+                    accept="image/*"
+                    className="sr-only"
+                />
+                {photoFile && photoFile.length > 0 ? (
+                    <span className="text-sm text-muted-foreground truncate max-w-xs">{photoFile[0].name}</span>
+                ) : (
+                    <span className="text-sm text-muted-foreground">No file selected</span>
+                )}
+            </div>
+            {errors.photo && <p className="text-sm text-destructive mt-1">{errors.photo.message as string}</p>}
+            {state.errors?.photo && <p className="text-sm text-destructive mt-1">{state.errors.photo.join(', ')}</p>}
 
             {photoFile && photoFile.length > 0 && (
               <div className="flex items-center space-x-2 mt-2">
@@ -179,7 +202,7 @@ const ReviewForm = () => {
                     id="agreeToTerms"
                     checked={field.value}
                     onCheckedChange={field.onChange}
-                    name="agreeToTerms" // Ensure name attribute for formAction
+                    name="agreeToTerms" 
                   />
                 )}
               />
@@ -201,3 +224,5 @@ const ReviewForm = () => {
 };
 
 export default ReviewForm;
+
+    

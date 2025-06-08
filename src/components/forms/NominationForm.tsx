@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useActionState, useEffect } from 'react';
@@ -6,7 +7,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { nominationSchema, type NominationFormValues } from '@/schemas/nominationSchema';
 import { submitNominationAction, type NominationSubmissionState } from '@/actions/nominationActions';
 
-import { Button } from '@/components/ui/button';
+import { Button, buttonVariants } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
@@ -14,6 +15,8 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { useToast } from '@/hooks/use-toast';
 import { useRouter } from 'next/navigation';
+import { UploadCloud } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 const initialFormState: NominationSubmissionState = {
   message: '',
@@ -28,10 +31,13 @@ const NominationForm = () => {
   const {
     register,
     handleSubmit,
+    watch, // Added watch
     formState: { errors, isSubmitting },
   } = useForm<NominationFormValues>({
     resolver: zodResolver(nominationSchema),
   });
+
+  const watchedPhoto = watch('photo');
 
  useEffect(() => {
     if (state.message) {
@@ -92,10 +98,33 @@ const NominationForm = () => {
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="photo">Photo (Optional)</Label>
-            <Input id="photo" type="file" {...register('photo')} accept="image/*" />
-            {errors.photo && <p className="text-sm text-destructive">{errors.photo.message as string}</p>}
-            {state.errors?.photo && <p className="text-sm text-destructive">{state.errors.photo.join(', ')}</p>}
+            <Label>Photo (Optional)</Label>
+            <div className="flex items-center gap-3">
+              <Label
+                htmlFor="nomination-photo-input"
+                className={cn(
+                  buttonVariants({ variant: 'outline' }),
+                  'cursor-pointer'
+                )}
+              >
+                <UploadCloud className="mr-2 h-4 w-4" />
+                Choose File
+              </Label>
+              <Input
+                id="nomination-photo-input"
+                type="file"
+                {...register('photo')}
+                accept="image/*"
+                className="sr-only"
+              />
+              {watchedPhoto && watchedPhoto.length > 0 ? (
+                <span className="text-sm text-muted-foreground truncate max-w-xs">{watchedPhoto[0].name}</span>
+              ) : (
+                <span className="text-sm text-muted-foreground">No file selected</span>
+              )}
+            </div>
+            {errors.photo && <p className="text-sm text-destructive mt-1">{errors.photo.message as string}</p>}
+            {state.errors?.photo && <p className="text-sm text-destructive mt-1">{state.errors.photo.join(', ')}</p>}
           </div>
         </CardContent>
         <CardFooter>
