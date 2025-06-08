@@ -12,6 +12,7 @@ import { useEffect, useState } from 'react';
 const navItems = [
   { href: '/reviews', label: 'Wall of Thrones' },
   { href: '/videos', label: 'Restroom Reels' },
+  { href: '/blog', label: 'Flush Journal' },
   { href: '/submit-review', label: 'Submit Review' },
   { href: '/nominate-business', label: 'Nominate Business' },
   { href: '/about', label: 'About Us' },
