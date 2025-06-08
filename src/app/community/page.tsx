@@ -2,8 +2,27 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Award, Star, Users, Construction } from "lucide-react";
 import Image from "next/image";
+import { generateCommunityImage } from "@/ai/flows/generate-community-image-flow";
 
-export default function CommunityPage() {
+export default async function CommunityPage() {
+  let imageDataUri = "https://placehold.co/600x300.png"; // Default placeholder
+  let imageAlt = "Community features coming soon placeholder";
+  let generatedImageHint; // No hint if generated
+
+  try {
+    const imageResult = await generateCommunityImage({ 
+      prompt: "A vibrant and inclusive illustration representing community teamwork and achievement. Depict diverse, stylized characters celebrating or collaborating joyfully on a project related to improving public spaces. The style should be modern, friendly, and inviting. Avoid text in the image." 
+    });
+    if (imageResult.imageDataUri) {
+      imageDataUri = imageResult.imageDataUri;
+      imageAlt = "AI Generated image representing community teamwork and achievement";
+    }
+  } catch (error) {
+    console.error("Failed to generate community image:", error);
+    // imageDataUri will remain the default placeholder
+    generatedImageHint = "community teamwork"; // Fallback hint if generation fails
+  }
+
   return (
     <div className="space-y-8">
       <Card className="shadow-lg">
@@ -26,12 +45,13 @@ export default function CommunityPage() {
               We're busy building this awesome space to celebrate our amazing contributors. Check back soon!
             </p>
             <Image
-              src="https://placehold.co/600x300.png"
-              alt="Community features coming soon"
+              src={imageDataUri}
+              alt={imageAlt}
               width={600}
               height={300}
               className="rounded-lg shadow-md opacity-80"
-              data-ai-hint="community teamwork"
+              priority={imageDataUri.startsWith('data:')} // prioritize if it's a generated image that we waited for
+              data-ai-hint={generatedImageHint} // Only add hint if it's the placeholder
             />
           </div>
 
