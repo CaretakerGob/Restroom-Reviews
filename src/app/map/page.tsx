@@ -1,76 +1,119 @@
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import Image from "next/image";
-import { MapPin, Filter, Star, Edit3 } from "lucide-react";
+import { MapPin, Filter, Star, Edit3, Search, Compass, Crosshair, PlusCircle } from "lucide-react";
 
 export default function InteractiveMapPage() {
   return (
     <div className="space-y-8">
       <Card className="shadow-lg">
-        <CardHeader className="text-center">
+        <CardHeader className="text-center pb-4">
           <CardTitle className="text-4xl font-headline text-primary flex items-center justify-center gap-2">
-            <MapPin className="h-10 w-10" /> Interactive Restroom Map
+            <Compass className="h-10 w-10" /> Interactive Restroom Map
           </CardTitle>
           <CardDescription className="text-lg text-foreground/80">
-            Find and pin restrooms near you or at your destination. (Feature Under Construction)
+            Find, review, and pin restrooms near you or at your destination.
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">
-          <p className="text-center text-foreground/70">
-            This map will allow you to visually explore restroom locations. You'll be able to use GPS to find nearby options or manually search for addresses.
-          </p>
           
-          <div className="relative w-full h-[400px] md:h-[600px] bg-muted rounded-lg shadow-inner flex items-center justify-center border border-border">
-            <Image
-              src="https://placehold.co/800x600.png"
-              alt="Placeholder for interactive map interface"
-              width={800}
-              height={600}
-              className="object-cover opacity-30 rounded-lg"
-              data-ai-hint="map interface"
-            />
-            <div className="absolute inset-0 flex flex-col items-center justify-center p-4 text-center">
-                <MapPin size={48} className="text-primary mb-4" />
-                <h3 className="text-2xl font-semibold text-foreground mb-2">Interactive Map Coming Soon!</h3>
-                <p className="text-muted-foreground">Imagine a world of restrooms at your fingertips...</p>
+          <div className="p-4 border rounded-lg bg-card-foreground/5 shadow">
+            <div className="flex flex-col sm:flex-row gap-4 mb-4">
+              <div className="flex-grow flex items-center gap-2">
+                <Input type="text" placeholder="Search by address, city, or landmark..." className="bg-background" />
+                <Button variant="outline" size="icon" aria-label="Search">
+                  <Search className="h-5 w-5" />
+                </Button>
+              </div>
+              <Button variant="outline" className="w-full sm:w-auto">
+                <Crosshair className="mr-2 h-5 w-5" /> Use My Location
+              </Button>
+            </div>
+
+            <div className="flex flex-wrap gap-2 mb-6">
+              <Button variant="outline" size="sm"><Filter className="mr-2 h-4 w-4" />All</Button>
+              <Button variant="ghost" size="sm" className="text-green-600 hover:bg-green-100 hover:text-green-700"><Star className="mr-2 h-4 w-4 text-green-500 fill-green-500" />Clean</Button>
+              <Button variant="ghost" size="sm" className="text-red-600 hover:bg-red-100 hover:text-red-700"><MapPin className="mr-2 h-4 w-4 text-red-500 fill-red-500" />Avoid</Button>
+              <Button variant="ghost" size="sm"><Edit3 className="mr-2 h-4 w-4" />Recently Reviewed</Button>
+              <Button variant="ghost" size="sm" className="text-teal-600 hover:bg-teal-100 hover:text-teal-700">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="m9 12 2 2 4-4"></path></svg>
+                Cleaned by R&R
+              </Button>
             </div>
           </div>
 
-          <div className="pt-6">
-            <h3 className="text-2xl font-headline text-secondary mb-4 text-center">Planned Features:</h3>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 text-foreground/80">
-              <div className="p-4 bg-card-foreground/5 rounded-lg border border-border/50">
-                <div className="flex items-center gap-2 mb-2">
-                  <MapPin className="h-6 w-6 text-accent" />
-                  <h4 className="font-semibold text-lg">Find & Pin</h4>
-                </div>
-                <p>Use GPS or manual input to locate and add restrooms to the map.</p>
-              </div>
-              <div className="p-4 bg-card-foreground/5 rounded-lg border border-border/50">
-                <div className="flex items-center gap-2 mb-2">
-                  <Filter className="h-6 w-6 text-accent" />
-                  <h4 className="font-semibold text-lg">Smart Filters</h4>
-                </div>
-                <p>Filter by "Clean," "Avoid," "Recently Reviewed," "Cleaned by R&R," and more.</p>
-              </div>
-              <div className="p-4 bg-card-foreground/5 rounded-lg border border-border/50">
-                <div className="flex items-center gap-2 mb-2">
-                  <Star className="h-6 w-6 text-accent" />
-                  <h4 className="font-semibold text-lg">View Reviews</h4>
-                </div>
-                <p>Tap a pin to see detailed reviews, ratings, and photos for that location.</p>
-              </div>
-              <div className="p-4 bg-card-foreground/5 rounded-lg border border-border/50">
-                <div className="flex items-center gap-2 mb-2">
-                  <Edit3 className="h-6 w-6 text-accent" />
-                  <h4 className="font-semibold text-lg">Submit On-the-Go</h4>
-                </div>
-                <p>Easily submit new reviews directly from the map interface.</p>
-              </div>
+          <div className="relative w-full h-[400px] md:h-[500px] bg-muted rounded-lg shadow-inner flex items-center justify-center border border-border overflow-hidden">
+            <Image
+              src="https://placehold.co/1200x800.png"
+              alt="Placeholder for interactive map interface"
+              fill
+              className="object-cover opacity-30"
+              data-ai-hint="world map"
+              priority
+            />
+            <div className="absolute inset-0 flex flex-col items-center justify-center p-4 text-center">
+                <MapPin size={64} className="text-primary mb-4 opacity-70" />
+                <h3 className="text-3xl font-semibold text-foreground/80 mb-2">Interactive Map Feature Coming Soon!</h3>
+                <p className="text-muted-foreground text-lg">Pinpoint your next pit stop with ease.</p>
+                 <Button variant="default" className="mt-6 shadow-md">
+                    <PlusCircle className="mr-2 h-5 w-5" /> Pin a New Restroom (Future)
+                </Button>
             </div>
           </div>
-          <p className="text-center text-sm text-muted-foreground pt-4">
-            We're working hard to bring this interactive experience to life. Stay tuned for updates!
+
+          <div className="pt-8">
+            <h3 className="text-3xl font-headline text-secondary mb-6 text-center">Map Features Roadmap</h3>
+            <div className="grid md:grid-cols-2 gap-6 text-foreground/80">
+              
+              <Card className="shadow-md">
+                <CardHeader>
+                  <CardTitle className="text-xl text-accent flex items-center gap-2">
+                    <Compass className="h-6 w-6" /> Real-time Location
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p>Use your device's GPS to find the closest restrooms or manually search any location worldwide.</p>
+                </CardContent>
+              </Card>
+
+              <Card className="shadow-md">
+                <CardHeader>
+                  <CardTitle className="text-xl text-accent flex items-center gap-2">
+                    <Filter className="h-6 w-6" /> Advanced Filtering
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p>Sort by overall rating, cleanliness, "Cleaned by R&R" status, specific amenities, and more.</p>
+                </CardContent>
+              </Card>
+
+              <Card className="shadow-md">
+                <CardHeader>
+                  <CardTitle className="text-xl text-accent flex items-center gap-2">
+                    <Star className="h-6 w-6" /> Instant Review Access
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p>Tap on a map pin to instantly see summary ratings, photos, and full reviews for any restroom.</p>
+                </CardContent>
+              </Card>
+
+              <Card className="shadow-md">
+                <CardHeader>
+                  <CardTitle className="text-xl text-accent flex items-center gap-2">
+                    <Edit3 className="h-6 w-6" /> On-the-Go Submissions
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p>Easily add new restrooms or submit reviews for existing ones directly from the map interface.</p>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+          <p className="text-center text-sm text-muted-foreground pt-6">
+            We're actively developing this feature. Stay tuned for a revolutionary way to navigate public restrooms!
           </p>
         </CardContent>
       </Card>
