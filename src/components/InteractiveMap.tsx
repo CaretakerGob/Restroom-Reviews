@@ -1,78 +1,86 @@
 
 'use client';
 
-import 'leaflet/dist/leaflet.css';
-import L from 'leaflet';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import type { Review } from '@/lib/mockReviews';
-import { useState, useEffect } from 'react';
+import { useState, useMemo } from 'react';
+import { GoogleMap, useJsApiLoader, MarkerF, InfoWindowF } from '@react-google-maps/api';
+import { Skeleton } from '@/components/ui/skeleton'; // For loading state
 
 interface InteractiveMapProps {
   reviews: Review[];
 }
 
+const mapContainerStyle = {
+  width: '100%',
+  height: '100%',
+};
+
+// Default center: somewhere in the US
+const defaultCenter = {
+  lat: 39.8283,
+  lng: -98.5795,
+};
+
 const InteractiveMap: React.FC<InteractiveMapProps> = ({ reviews }) => {
-  const [isClient, setIsClient] = useState(false);
+  const [selectedMarker, setSelectedMarker] = useState<Review | null>(null);
 
-  useEffect(() => {
-    // This effect runs once on the client after the component mounts.
-    // In React 18 Strict Mode, it runs mount -> unmount -> mount in development.
-    
-    // Ensure Leaflet's default icon paths are set correctly.
-    L.Icon.Default.mergeOptions({
-      iconRetinaUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png',
-      iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
-      shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
-    });
-    
-    // Defer setting isClient to true to the next event loop tick.
-    // This can help with HMR and ensuring the DOM is fully settled before rendering the map.
-    const timer = setTimeout(() => {
-      setIsClient(true);
-    }, 0); 
+  const { isLoaded, loadError } = useJsApiLoader({
+    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || "",
+    // libraries: ['places'], // Add other libraries as needed
+  });
 
-    return () => {
-      clearTimeout(timer);
-      // Note: react-leaflet's MapContainer should handle its own Leaflet instance cleanup.
-    };
-  }, []); // Empty dependency array ensures this runs effectively once on final mount.
+  const mapOptions = useMemo<google.maps.MapOptions>(
+    () => ({
+      disableDefaultUI: false,
+      clickableIcons: true,
+      scrollwheel: true,
+    }),
+    []
+  );
 
-  // Default center: somewhere in the US
-  const defaultPosition: L.LatLngExpression = [39.8283, -98.5795];
-  const defaultZoom = 4;
+  if (loadError) {
+    return (
+      <div className="w-full h-full flex items-center justify-center bg-destructive/10 text-destructive p-4 rounded-lg">
+        <p>Error loading Google Maps. Please ensure the API key is correctly configured and the Maps JavaScript API is enabled.</p>
+      </div>
+    );
+  }
 
-  if (!isClient) {
-    // Return null or a very basic placeholder while waiting for client-side mount.
-    // The parent page's dynamic import already handles a more styled loading state.
-    return null; 
+  if (!isLoaded) {
+    return <Skeleton className="w-full h-full rounded-lg" />;
   }
   
   return (
-    <MapContainer
-        key="leaflet-map-container-stable" // Added a static key
-        center={defaultPosition} 
-        zoom={defaultZoom} 
-        scrollWheelZoom={true} 
-        style={{ height: '100%', width: '100%' }}
-        className="rounded-lg shadow-inner border border-border"
+    <GoogleMap
+      mapContainerStyle={mapContainerStyle}
+      center={defaultCenter}
+      zoom={4}
+      options={mapOptions}
     >
-      <TileLayer
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      />
       {reviews.map(review => (
-        <Marker key={review.id} position={[review.latitude, review.longitude]}>
-          <Popup>
-            <div className="p-1">
-              <h3 className="font-bold text-base text-primary mb-1">{review.locationName}</h3>
-              <p className="text-xs text-foreground/80 mb-0.5">{review.address}</p>
-              <p className="text-xs text-muted-foreground">Rating: {review.overallRating}/5</p>
-              {/* Future: Add a link to the full review or more details */}
-            </div>
-          </Popup>
-        </Marker>
+        <MarkerF
+          key={review.id}
+          position={{ lat: review.latitude, lng: review.longitude }}
+          onClick={() => setSelectedMarker(review)}
+          title={review.locationName}
+        />
       ))}
-    </MapContainer>
+
+      {selectedMarker && (
+        <InfoWindowF
+          position={{ lat: selectedMarker.latitude, lng: selectedMarker.longitude }}
+          onCloseClick={() => setSelectedMarker(null)}
+          options={{ pixelOffset: new window.google.maps.Size(0, -30) }}
+        >
+          <div className="p-1 max-w-xs">
+            <h3 className="font-bold text-base text-primary mb-1">{selectedMarker.locationName}</h3>
+            <p className="text-xs text-foreground/80 mb-0.5">{selectedMarker.address}</p>
+            <p className="text-xs text-muted-foreground">Rating: {selectedMarker.overallRating}/5</p>
+            {/* Future: Link to full review */}
+          </div>
+        </InfoWindowF>
+      )}
+    </GoogleMap>
   );
 };
 
