@@ -17,7 +17,7 @@ export default function ThankYouPage() {
   }
 
   return (
-    <div className="relative min-h-[calc(100vh-var(--header-height)-var(--footer-height))] flex flex-col items-center justify-center text-center py-12 px-4">
+    <div className="relative flex flex-col items-center justify-center text-center py-12 px-4">
       <ConfettiPlaceholder />
       <div className="z-10 relative bg-background/80 p-8 rounded-lg shadow-xl max-w-lg backdrop-blur-sm mt-[-10vh]">
         {/* Content is now inside ConfettiPlaceholder, this is a fallback or additional content area if needed */}

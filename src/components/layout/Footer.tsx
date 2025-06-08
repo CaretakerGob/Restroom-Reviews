@@ -3,7 +3,7 @@ import { Twitter, Instagram, Youtube } from 'lucide-react';
 
 const Footer = () => {
   return (
-    <footer className="bg-secondary text-secondary-foreground py-8 mt-auto">
+    <footer className="bg-secondary text-secondary-foreground py-8">
       <div className="container mx-auto px-4 text-center">
         <div className="flex justify-center space-x-6 mb-4">
           <Link href="/about" className="hover:text-accent transition-colors">About Us</Link>
