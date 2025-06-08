@@ -5,11 +5,12 @@ import Link from 'next/link';
 import Logo from '@/components/Logo';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { Menu, Sun, Moon, MapPin, ListChecks, Users, Film, MessageSquareText, Edit3, HandHelping, ShieldCheck } from 'lucide-react';
+import { Menu, Sun, Moon, MapPin, ListChecks, Users, Film, MessageSquareText, Edit3, HandHelping, ShieldCheck, Home } from 'lucide-react';
 import { useTheme } from '@/components/ThemeProvider';
 import React, { useEffect, useState } from 'react';
 
 const navItems = [
+  { href: '/', label: 'Home', icon: <Home /> },
   { href: '/map', label: 'Lavatory Locator', icon: <MapPin /> },
   { href: '/reviews', label: 'Wall of Thrones', icon: <ListChecks /> },
   { href: '/community', label: 'Flush Force HQ', icon: <Users /> },

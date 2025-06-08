@@ -6,7 +6,8 @@ const Footer = () => {
   return (
     <footer className="bg-secondary text-secondary-foreground py-8">
       <div className="container mx-auto px-4 text-center">
-        <div className="flex justify-center space-x-6 mb-4">
+        <div className="flex justify-center space-x-4 md:space-x-6 mb-4 flex-wrap">
+          <Link href="/" className="hover:text-accent transition-colors">Home</Link>
           <Link href="/about" className="hover:text-accent transition-colors">About Us</Link>
           <Link href="/contact" className="hover:text-accent transition-colors">Contact</Link>
           <Link href="/porcelain-rule" className="hover:text-accent transition-colors">Proper Porcelain Policy</Link>
