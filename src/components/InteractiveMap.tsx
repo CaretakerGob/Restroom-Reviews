@@ -5,8 +5,7 @@ import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import type { Review } from '@/lib/mockReviews';
-// useEffect is no longer strictly needed here for the previous purpose.
-// import { useEffect } from 'react'; 
+import { useState, useEffect } from 'react';
 
 // This is to fix the default icon issue with Leaflet in some bundlers
 // It's important this runs once when the module is loaded.
@@ -24,13 +23,22 @@ interface InteractiveMapProps {
 }
 
 const InteractiveMap: React.FC<InteractiveMapProps> = ({ reviews }) => {
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
   // Default center: somewhere in the US
   const defaultPosition: L.LatLngExpression = [39.8283, -98.5795];
   const defaultZoom = 4;
 
-  // The dynamic import with ssr:false in map/page.tsx ensures this component
-  // and its content (including MapContainer) only render on the client side.
-  // The if (typeof window === 'undefined') check is handled by the dynamic import's loading state.
+  if (!isClient) {
+    // Return null or a placeholder until the component has mounted on the client
+    // The parent dynamic import already has a loading state for the initial load.
+    // This handles potential re-renders or HMR issues.
+    return null; 
+  }
   
   return (
     <MapContainer 
