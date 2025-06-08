@@ -2,7 +2,7 @@
 'use client';
 
 import { useActionState, useEffect } from 'react';
-import { useForm } from 'react-hook-form';
+import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { nominationSchema, type NominationFormValues } from '@/schemas/nominationSchema';
 import { submitNominationAction, type NominationSubmissionState } from '@/actions/nominationActions';
@@ -11,12 +11,14 @@ import { Button, buttonVariants } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
+import { Checkbox } from '@/components/ui/checkbox';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { useToast } from '@/hooks/use-toast';
 import { useRouter } from 'next/navigation';
 import { UploadCloud } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import ThePorcelainRuleModal from '@/components/ThePorcelainRuleModal'; // Import the modal
 
 const initialFormState: NominationSubmissionState = {
   message: '',
@@ -29,12 +31,22 @@ const NominationForm = () => {
   const router = useRouter();
 
   const {
+    control, // Added control
     register,
     handleSubmit,
-    watch, // Added watch
+    watch,
     formState: { errors, isSubmitting },
   } = useForm<NominationFormValues>({
     resolver: zodResolver(nominationSchema),
+    defaultValues: {
+      userNameEmail: '',
+      businessName: '',
+      businessLocation: '',
+      reason: '',
+      photo: undefined,
+      noPeopleInPhoto: false,
+      agreeToTerms: false,
+    }
   });
 
   const watchedPhoto = watch('photo');
@@ -49,7 +61,6 @@ const NominationForm = () => {
     }
     if (state.success) {
       // Redirect is handled by server action now
-      // router.push('/thank-you?type=nomination');
     }
   }, [state, toast, router]);
 
@@ -125,7 +136,52 @@ const NominationForm = () => {
             </div>
             {errors.photo && <p className="text-sm text-destructive mt-1">{errors.photo.message as string}</p>}
             {state.errors?.photo && <p className="text-sm text-destructive mt-1">{state.errors.photo.join(', ')}</p>}
+            
+            {watchedPhoto && watchedPhoto.length > 0 && (
+              <div className="flex items-center space-x-2 mt-2">
+                <Controller
+                  name="noPeopleInPhoto"
+                  control={control}
+                  render={({ field }) => (
+                    <Checkbox
+                      id="nominationNoPeopleInPhoto"
+                      checked={field.value}
+                      onCheckedChange={field.onChange}
+                      name="noPeopleInPhoto"
+                    />
+                  )}
+                />
+                <Label htmlFor="nominationNoPeopleInPhoto" className="text-sm font-normal">
+                  I confirm no people appear in my photo.
+                </Label>
+              </div>
+            )}
+            {errors.noPeopleInPhoto && <p className="text-sm text-destructive">{errors.noPeopleInPhoto.message}</p>}
+            {state.errors?.noPeopleInPhoto && <p className="text-sm text-destructive">{state.errors.noPeopleInPhoto.join(', ')}</p>}
           </div>
+
+          <div className="space-y-2">
+            <div className="flex items-center space-x-2">
+              <Controller
+                  name="agreeToTerms"
+                  control={control}
+                  render={({ field }) => (
+                    <Checkbox
+                      id="nominationAgreeToTerms"
+                      checked={field.value}
+                      onCheckedChange={field.onChange}
+                      name="agreeToTerms"
+                    />
+                  )}
+                />
+              <Label htmlFor="nominationAgreeToTerms" className="text-sm font-normal flex items-center gap-1">
+                I agree to <ThePorcelainRuleModal />
+              </Label>
+            </div>
+            {errors.agreeToTerms && <p className="text-sm text-destructive">{errors.agreeToTerms.message}</p>}
+            {state.errors?.agreeToTerms && <p className="text-sm text-destructive">{state.errors.agreeToTerms.join(', ')}</p>}
+          </div>
+
         </CardContent>
         <CardFooter>
           <Button type="submit" className="w-full" disabled={isSubmitting}>

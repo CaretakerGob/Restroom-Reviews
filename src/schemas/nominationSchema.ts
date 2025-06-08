@@ -1,3 +1,4 @@
+
 import { z } from 'zod';
 
 const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
@@ -9,18 +10,28 @@ export const nominationSchema = z.object({
   businessLocation: z.string().min(5, { message: "Business location must be at least 5 characters." }),
   reason: z.string().min(20, { message: "Reason must be at least 20 characters." }).max(1000, { message: "Reason cannot exceed 1000 characters." }),
   photo: z.any()
-    .refine((file) => {
-      if (!file || file.length === 0) return true; // Optional
-      return file[0]?.size <= MAX_FILE_SIZE;
+    .refine((files) => {
+      if (!files || files.length === 0) return true; // Optional, so no file is fine
+      return files[0]?.size <= MAX_FILE_SIZE;
     }, `Max image size is 5MB.`)
     .refine(
-      (file) => {
-        if (!file || file.length === 0) return true; // Optional
-        return ACCEPTED_IMAGE_TYPES.includes(file[0]?.type)
+      (files) => {
+        if (!files || files.length === 0) return true; // Optional
+        return ACCEPTED_IMAGE_TYPES.includes(files[0]?.type);
       },
       "Only .jpg, .jpeg, .png and .webp formats are supported."
     )
     .optional(),
+  noPeopleInPhoto: z.boolean().optional().default(false),
+  agreeToTerms: z.boolean().refine(val => val === true, { message: "You must agree to The Porcelain Rule." }),
+}).superRefine((data, ctx) => {
+  if (data.photo && data.photo.length > 0 && !data.noPeopleInPhoto) {
+    ctx.addIssue({
+      code: z.ZodIssueCode.custom,
+      message: "Please confirm no people appear in the photo if you upload one.",
+      path: ["noPeopleInPhoto"],
+    });
+  }
 });
 
 export type NominationFormValues = z.infer<typeof nominationSchema>;
