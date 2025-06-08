@@ -5,9 +5,11 @@ import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import type { Review } from '@/lib/mockReviews';
-import { useEffect } from 'react';
+// useEffect is no longer strictly needed here for the previous purpose.
+// import { useEffect } from 'react'; 
 
 // This is to fix the default icon issue with Leaflet in some bundlers
+// It's important this runs once when the module is loaded.
 // @ts-ignore
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
@@ -26,17 +28,9 @@ const InteractiveMap: React.FC<InteractiveMapProps> = ({ reviews }) => {
   const defaultPosition: L.LatLngExpression = [39.8283, -98.5795];
   const defaultZoom = 4;
 
-  // Use useEffect to prevent window not defined errors during SSR for map operations.
-  // Although next/dynamic with ssr:false handles the component, direct leaflet 'L' usage might need this.
-  useEffect(() => {
-    // Any Leaflet L. global configurations can be done here if needed
-  }, []);
-
-  if (typeof window === 'undefined') {
-    // Still good practice to ensure nothing map-related tries to run server-side
-    // or before the window object is available.
-    return <div className="w-full h-[400px] md:h-[500px] bg-muted rounded-lg flex items-center justify-center">Loading map...</div>;
-  }
+  // The dynamic import with ssr:false in map/page.tsx ensures this component
+  // and its content (including MapContainer) only render on the client side.
+  // The if (typeof window === 'undefined') check is handled by the dynamic import's loading state.
   
   return (
     <MapContainer 
