@@ -1,6 +1,6 @@
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Award, Star, Users, Construction, BadgeCheck } from "lucide-react";
+import { Award, Star, Users, Construction, BadgeCheck, ShoppingBag } from "lucide-react";
 import Image from "next/image";
 import { generateCommunityImage } from "@/ai/flows/generate-community-image-flow";
 
@@ -11,7 +11,7 @@ export default async function CommunityPage() {
 
   try {
     const imageResult = await generateCommunityImage({ 
-      prompt: "A vibrant and inclusive illustration representing the 'Flush Force' community teamwork and achievement. Depict diverse, stylized characters, the Flush Force, celebrating or collaborating joyfully on a project related to improving public restrooms. The style should be modern, friendly, and inviting. Avoid text in the image." 
+      prompt: "A vibrant and inclusive illustration representing the 'Flush Force' community teamwork and achievement, featuring stylized characters celebrating. Include subtle hints of badges or awards. The style should be modern, friendly, and inviting. Avoid text in the image." 
     });
     if (imageResult.imageDataUri) {
       imageDataUri = imageResult.imageDataUri;
@@ -20,7 +20,7 @@ export default async function CommunityPage() {
   } catch (error) {
     console.error("Failed to generate community image:", error);
     // imageDataUri will remain the default placeholder
-    generatedImageHint = "community teamwork"; // Fallback hint if generation fails
+    generatedImageHint = "community teamwork achievement"; // Fallback hint if generation fails
   }
 
   return (
@@ -31,7 +31,7 @@ export default async function CommunityPage() {
             <Users className="h-10 w-10" /> 🏆 Flush Force HQ
           </CardTitle>
           <CardDescription className="text-lg text-foreground/80">
-            Our community hub for top reviewers, MVPs, and fun badges is under construction!
+            Our community hub for top reviewers, MVPs, an awesome badge system, and future merch is under construction!
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-10 flex flex-col items-center justify-center text-center">
@@ -42,7 +42,7 @@ export default async function CommunityPage() {
               Feature Under Construction!
             </h2>
             <p className="text-xl text-foreground/70 mt-2 mb-6">
-              We're busy building this awesome space to celebrate our amazing contributors. Check back soon!
+              We're busy building this awesome space to celebrate our amazing contributors. Get ready for leaderboards, cool badges, and more! Check back soon!
             </p>
             <Image
               src={imageDataUri}
@@ -55,25 +55,25 @@ export default async function CommunityPage() {
             />
           </div>
 
-          <div className="w-full max-w-3xl space-y-6 pt-6">
-            <h3 className="text-2xl font-headline text-secondary border-b pb-2">What's Coming?</h3>
-            <div className="grid md:grid-cols-3 gap-6 text-left">
+          <div className="w-full max-w-4xl space-y-6 pt-6">
+            <h3 className="text-2xl font-headline text-secondary border-b pb-2">What's Coming to Flush Force HQ?</h3>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
               <Card className="bg-card-foreground/5">
                 <CardHeader className="flex-row items-center gap-2 pb-2">
                   <Star className="h-6 w-6 text-accent" />
                   <CardTitle className="text-xl text-accent">Flush Force Rankings</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-sm text-muted-foreground">See who's leading the charge in submitting the most helpful and detailed restroom reviews.</p>
+                  <p className="text-sm text-muted-foreground">Climb the ranks! See who's leading the charge as "Toilet Titans" and "Bowl Bosses" in submitting the most helpful restroom reviews.</p>
                 </CardContent>
               </Card>
               <Card className="bg-card-foreground/5">
                 <CardHeader className="flex-row items-center gap-2 pb-2">
                   <Award className="h-6 w-6 text-accent" />
-                  <CardTitle className="text-xl text-accent">Toilet Titans</CardTitle>
+                  <CardTitle className="text-xl text-accent">Community MVPs</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-sm text-muted-foreground">Highlighting members who go above and beyond in contributing to a cleaner restroom world.</p>
+                  <p className="text-sm text-muted-foreground">Highlighting members who go above and beyond in contributing to a cleaner restroom world. Our true "Porcelain Paladins"!</p>
                 </CardContent>
               </Card>
               <Card className="bg-card-foreground/5">
@@ -82,7 +82,16 @@ export default async function CommunityPage() {
                   <CardTitle className="text-xl text-accent">Lavatory Legend Badges</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-sm text-muted-foreground">Earn cool badges like "Toilet Whisperer," "Wipe Watcher," "Five-Star Flusher," and more for your contributions!</p>
+                  <p className="text-sm text-muted-foreground">Earn awesome digital (and maybe physical!) R&R Branded Badges like "Throne Tester," "Wipe Watcher," "Stall Sentinel," "Relief Ranger," and the coveted "Toilet Titan" award!</p>
+                </CardContent>
+              </Card>
+              <Card className="bg-card-foreground/5 lg:col-span-3">
+                <CardHeader className="flex-row items-center gap-2 pb-2">
+                  <ShoppingBag className="h-6 w-6 text-accent" />
+                  <CardTitle className="text-xl text-accent">Porcelain Provisions (Merch Drop!)</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-sm text-muted-foreground">Get ready for "Porcelain Provisions Vol. 1"! We're planning fun merch like sticker packs ("Certified Clean by R&R"), "Flush Force" air fresheners, "Toilet Titan" shirts, and more. Show off your "Flush Fashionista" style!</p>
                 </CardContent>
               </Card>
             </div>
