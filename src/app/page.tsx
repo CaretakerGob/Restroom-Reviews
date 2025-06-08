@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <div className="flex flex-col items-center text-center space-y-12 py-12">
       <Image 
-        src="/logo.png" 
+        src="https://firebasestorage.googleapis.com/v0/b/rotb-companion.firebasestorage.app/o/Restroom%20Reviews%2FLogos%2FR%26R%20LOGO_THREE_sparkle.png?alt=media&token=0960bfdf-0780-4f91-83eb-61bbddb13280"
         alt="Restroom Reviews Official Logo" 
         width={200} 
         height={200} 
