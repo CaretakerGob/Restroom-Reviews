@@ -40,13 +40,18 @@ const ReviewForm = () => {
   } = useForm<ReviewFormValues>({
     resolver: zodResolver(reviewSchema),
     defaultValues: {
+      userName: '',
+      locationName: '',
+      address: '',
       cleanliness: 0,
       smell: 0,
       comfort: 0,
       soapSupplies: 0,
       stallSecurity: 0,
-      agreeToTerms: false,
+      photo: undefined,
       noPeopleInPhoto: false,
+      comments: '',
+      agreeToTerms: false,
     },
   });
 
@@ -60,11 +65,7 @@ const ReviewForm = () => {
         variant: state.success ? 'default' : 'destructive',
       });
     }
-    if (state.success) {
-      // Redirect is handled by server action now
-      // router.push('/thank-you?type=review');
-    }
-  }, [state, toast, router]);
+  }, [state, toast, router]); // Explicit semicolon added after this block
 
   return (
     <Card className="w-full max-w-2xl mx-auto shadow-xl">
@@ -120,13 +121,13 @@ const ReviewForm = () => {
                       initialValue={field.value as number}
                       onChange={(value) => {
                         setValue(rating.name as keyof ReviewFormValues, value, { shouldValidate: true });
-                        const hiddenInput = document.getElementById(\`\${rating.name}-hiddenInput\`) as HTMLInputElement | null;
+                        const hiddenInput = document.getElementById(`${rating.name}-hiddenInput`) as HTMLInputElement | null;
                         if (hiddenInput) hiddenInput.value = String(value);
                       }}
                     />
                   )}
                 />
-                <input type="hidden" id={\`\${rating.name}-hiddenInput\`} name={rating.name} defaultValue="0" />
+                <input type="hidden" id={`${rating.name}-hiddenInput`} name={rating.name} defaultValue="0" />
                 {errors[rating.name as keyof ReviewFormValues] && (
                   <p className="text-sm text-destructive">{errors[rating.name as keyof ReviewFormValues]?.message}</p>
                 )}
@@ -174,7 +175,7 @@ const ReviewForm = () => {
                       id="noPeopleInPhoto"
                       checked={field.value}
                       onCheckedChange={field.onChange}
-                      name="noPeopleInPhoto"
+                      name="noPeopleInPhoto" 
                     />
                   )}
                 />
@@ -184,6 +185,7 @@ const ReviewForm = () => {
               </div>
             )}
             {errors.noPeopleInPhoto && <p className="text-sm text-destructive">{errors.noPeopleInPhoto.message}</p>}
+            {state.errors?.noPeopleInPhoto && <p className="text-sm text-destructive">{state.errors.noPeopleInPhoto.join(', ')}</p>}
           </div>
 
           <div className="space-y-2">
@@ -224,5 +226,3 @@ const ReviewForm = () => {
 };
 
 export default ReviewForm;
-
-    
