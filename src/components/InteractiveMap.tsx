@@ -23,9 +23,10 @@ const defaultCenter = {
 
 const InteractiveMap: React.FC<InteractiveMapProps> = ({ reviews }) => {
   const [selectedMarker, setSelectedMarker] = useState<Review | null>(null);
+  const googleMapsApiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
 
   const { isLoaded, loadError } = useJsApiLoader({
-    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || "",
+    googleMapsApiKey: googleMapsApiKey || "",
     // libraries: ['places'], // Add other libraries as needed
   });
 
@@ -38,10 +39,19 @@ const InteractiveMap: React.FC<InteractiveMapProps> = ({ reviews }) => {
     []
   );
 
+  if (!googleMapsApiKey) {
+    return (
+      <div className="w-full h-full flex items-center justify-center bg-destructive/10 text-destructive p-4 rounded-lg">
+        <p>Error: Google Maps API key is not configured. Please set the NEXT_PUBLIC_GOOGLE_MAPS_API_KEY environment variable.</p>
+      </div>
+    );
+  }
+
   if (loadError) {
     return (
       <div className="w-full h-full flex items-center justify-center bg-destructive/10 text-destructive p-4 rounded-lg">
-        <p>Error loading Google Maps. Please ensure the API key is correctly configured and the Maps JavaScript API is enabled.</p>
+        <p>Error loading Google Maps. This could be due to an invalid API key, incorrect API key restrictions, or the Maps JavaScript API not being enabled in your Google Cloud Console. Please double-check your setup.</p>
+        <p className="text-xs mt-2">Common issues: Missing billing information, API not enabled for project, or incorrect HTTP referrers/API restrictions.</p>
       </div>
     );
   }
