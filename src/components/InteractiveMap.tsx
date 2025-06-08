@@ -19,9 +19,6 @@ const InteractiveMap: React.FC<InteractiveMapProps> = ({ reviews }) => {
     // In React 18 Strict Mode, it runs mount -> unmount -> mount in development.
     
     // Ensure Leaflet's default icon paths are set correctly.
-    // This is a common pattern to avoid issues with icon paths in bundled applications.
-    // @ts-ignore
-    delete L.Icon.Default.prototype._getIconUrl; 
     L.Icon.Default.mergeOptions({
       iconRetinaUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png',
       iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
