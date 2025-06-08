@@ -10,6 +10,7 @@ import { useTheme } from '@/components/ThemeProvider';
 import { useEffect, useState } from 'react';
 
 const navItems = [
+  { href: '/reviews', label: 'Wall of Thrones' },
   { href: '/submit-review', label: 'Submit Review' },
   { href: '/nominate-business', label: 'Nominate Business' },
   { href: '/about', label: 'About Us' },
@@ -41,7 +42,7 @@ const Header = () => {
     <header className="bg-card shadow-md sticky top-0 z-50">
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         <Logo />
-        <nav className="hidden md:flex space-x-2 items-center"> {/* Reduced space-x for more items */}
+        <nav className="hidden md:flex space-x-1 items-center"> {/* Reduced space-x for more items */}
           {navItems.map((item) => (
             <Button key={item.href} variant="ghost" asChild>
               <Link href={item.href}>{item.label}</Link>
