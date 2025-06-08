@@ -12,6 +12,7 @@ import { useEffect, useState } from 'react';
 const navItems = [
   { href: '/map', label: 'Interactive Map' },
   { href: '/reviews', label: 'Wall of Thrones' },
+  { href: '/community', label: 'Community Hub' },
   { href: '/videos', label: 'Restroom Reels' },
   { href: '/blog', label: 'Flush Journal' },
   { href: '/submit-review', label: 'Submit Review' },
