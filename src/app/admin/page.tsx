@@ -1,7 +1,7 @@
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { ShieldAlert, MapPin, Users, Award, TrendingUp } from "lucide-react";
+import { ShieldAlert, MapPin, Users, Award, TrendingUp, HandHelping } from "lucide-react";
 
 export default function AdminPage() {
   return (
@@ -10,7 +10,7 @@ export default function AdminPage() {
         <CardHeader className="text-center">
           <CardTitle className="text-4xl font-headline text-primary">Admin Dashboard</CardTitle>
           <CardDescription className="text-lg text-foreground/80">
-            Manage reviews, nominations, site settings, and track our impact.
+            Manage Throne Advisor: reviews, nominations, site settings, and track our impact.
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">
@@ -30,7 +30,7 @@ export default function AdminPage() {
               </CardHeader>
               <CardContent>
                 <p className="text-3xl font-bold">12</p>
-                <p className="text-sm text-muted-foreground">Reviews awaiting approval.</p>
+                <p className="text-sm text-muted-foreground">Stall Stories awaiting approval.</p>
               </CardContent>
             </Card>
             <Card>
@@ -39,7 +39,7 @@ export default function AdminPage() {
               </CardHeader>
               <CardContent>
                 <p className="text-3xl font-bold">5</p>
-                <p className="text-sm text-muted-foreground">Nominations to review.</p>
+                <p className="text-sm text-muted-foreground">"Cleanup Crusade" nominations to review.</p>
               </CardContent>
             </Card>
              <Card>
@@ -53,7 +53,9 @@ export default function AdminPage() {
             </Card>
           </div>
 
-          <h2 className="text-2xl font-headline text-secondary pt-6 border-b pb-2 mt-8">"Clean It Up" Impact Tracker</h2>
+          <h2 className="text-2xl font-headline text-secondary pt-6 border-b pb-2 mt-8 flex items-center gap-2">
+            <HandHelping /> "Cleanup Crusade" Impact Tracker
+            </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             <Card>
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
@@ -83,7 +85,6 @@ export default function AdminPage() {
               <CardContent>
                 <p className="text-3xl font-bold">5</p>
                 <p className="text-xs text-muted-foreground">e.g., New York, Pleasantville, Readsville</p>
-                 {/* Placeholder for future map visualization */}
               </CardContent>
             </Card>
             <Card>
@@ -103,8 +104,8 @@ export default function AdminPage() {
             <ul className="list-disc list-inside space-y-2 text-foreground/80">
               <li>View, edit, and delete submitted reviews.</li>
               <li>Approve or reject content before public display.</li>
-              <li>Manage "Clean It Up" program nominations and status.</li>
-              <li>Tag locations with a "Cleaned by R&R" badge.</li>
+              <li>Manage "Cleanup Crusade" program nominations and status.</li>
+              <li>Tag locations with a "Cleaned by Throne Advisor" badge.</li>
               <li>User management (view, roles, ban).</li>
               <li>Site analytics and reporting.</li>
               <li>Configuration for AI summarization parameters.</li>

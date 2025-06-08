@@ -17,8 +17,9 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { useToast } from '@/hooks/use-toast';
 import { useRouter } from 'next/navigation';
-import { UploadCloud } from 'lucide-react';
+import { UploadCloud, Edit3 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import ThePorcelainRuleModal from '@/components/ThePorcelainRuleModal';
 
 const initialFormState: ReviewSubmissionState = {
   message: '',
@@ -65,12 +66,14 @@ const ReviewForm = () => {
         variant: state.success ? 'default' : 'destructive',
       });
     }
-  }, [state, toast, router]); // Explicit semicolon added after this block
+  }, [state, toast, router]);
 
   return (
     <Card className="w-full max-w-2xl mx-auto shadow-xl">
       <CardHeader>
-        <CardTitle className="text-3xl font-headline text-primary">Submit a Restroom Review</CardTitle>
+        <CardTitle className="text-3xl font-headline text-primary flex items-center gap-2">
+           <Edit3 className="h-8 w-8" /> Share Your Stall Story
+        </CardTitle>
         <CardDescription>Share your experience to help others and improve facilities.</CardDescription>
       </CardHeader>
       <form action={formAction}>
@@ -208,8 +211,8 @@ const ReviewForm = () => {
                   />
                 )}
               />
-            <Label htmlFor="agreeToTerms" className="text-sm font-normal">
-              I agree to The Porcelain Rule.
+            <Label htmlFor="agreeToTerms" className="text-sm font-normal flex items-center gap-1">
+              I agree to <ThePorcelainRuleModal />
             </Label>
           </div>
           {errors.agreeToTerms && <p className="text-sm text-destructive">{errors.agreeToTerms.message}</p>}
@@ -217,7 +220,7 @@ const ReviewForm = () => {
         </CardContent>
         <CardFooter>
           <Button type="submit" className="w-full" disabled={isSubmitting}>
-            {isSubmitting ? 'Submitting...' : 'Submit Review'}
+            {isSubmitting ? 'Submitting...' : 'Submit Stall Story'}
           </Button>
         </CardFooter>
       </form>

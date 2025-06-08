@@ -1,3 +1,4 @@
+
 import { z } from 'zod';
 
 const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
@@ -27,7 +28,7 @@ export const reviewSchema = z.object({
     .optional(),
   noPeopleInPhoto: z.boolean().optional().default(false),
   comments: z.string().min(10, { message: "Comments must be at least 10 characters." }).max(1000, { message: "Comments cannot exceed 1000 characters." }),
-  agreeToTerms: z.boolean().refine(val => val === true, { message: "You must agree to The Porcelain Rule." }),
+  agreeToTerms: z.boolean().refine(val => val === true, { message: "You must agree to The Proper Porcelain Policy." }),
 });
 
 export type ReviewFormValues = z.infer<typeof reviewSchema>;

@@ -16,9 +16,9 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { useToast } from '@/hooks/use-toast';
 import { useRouter } from 'next/navigation';
-import { UploadCloud } from 'lucide-react';
+import { UploadCloud, HandHelping } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import ThePorcelainRuleModal from '@/components/ThePorcelainRuleModal'; // Import the modal
+import ThePorcelainRuleModal from '@/components/ThePorcelainRuleModal';
 
 const initialFormState: NominationSubmissionState = {
   message: '',
@@ -31,7 +31,7 @@ const NominationForm = () => {
   const router = useRouter();
 
   const {
-    control, // Added control
+    control,
     register,
     handleSubmit,
     watch,
@@ -68,7 +68,9 @@ const NominationForm = () => {
   return (
     <Card className="w-full max-w-2xl mx-auto shadow-xl">
       <CardHeader>
-        <CardTitle className="text-3xl font-headline text-primary">Nominate a Business for "Clean It Up"</CardTitle>
+        <CardTitle className="text-3xl font-headline text-primary flex items-center gap-2">
+          <HandHelping className="h-8 w-8" /> Nominate for the Cleanup Crusade
+        </CardTitle>
         <CardDescription>Know a place that needs some R&R (Restroom Renovation)? Let us know!</CardDescription>
       </CardHeader>
       <form action={formAction}>
@@ -185,7 +187,7 @@ const NominationForm = () => {
         </CardContent>
         <CardFooter>
           <Button type="submit" className="w-full" disabled={isSubmitting}>
-            {isSubmitting ? 'Submitting...' : 'Nominate Business'}
+            {isSubmitting ? 'Submitting...' : 'Submit Nomination'}
           </Button>
         </CardFooter>
       </form>

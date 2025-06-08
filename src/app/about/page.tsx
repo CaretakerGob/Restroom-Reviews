@@ -1,3 +1,4 @@
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Image from "next/image";
 
@@ -6,7 +7,7 @@ export default function AboutPage() {
     <div className="space-y-8">
       <Card className="shadow-lg">
         <CardHeader>
-          <CardTitle className="text-4xl font-headline text-primary text-center">About Restroom Reviews</CardTitle>
+          <CardTitle className="text-4xl font-headline text-primary text-center">About Throne Advisor</CardTitle>
         </CardHeader>
         <CardContent className="space-y-6 text-lg text-foreground/80 leading-relaxed">
           <div className="flex flex-col md:flex-row items-center gap-8">
@@ -20,7 +21,7 @@ export default function AboutPage() {
             />
             <div className="md:w-1/2">
               <p>
-                Restroom Reviews was born from a simple, universal need: finding a clean, safe, and comfortable public restroom.
+                Throne Advisor was born from a simple, universal need: finding a clean, safe, and comfortable public restroom.
                 We've all been there – that desperate search, the anxiety of the unknown, the relief of finding a decent facility, or the dismay of a… less-than-stellar experience.
               </p>
               <p className="mt-4">
@@ -33,7 +34,7 @@ export default function AboutPage() {
           <h2 className="text-3xl font-headline text-secondary pt-6">Our Vision</h2>
           <p>
             We envision a world where access to clean and well-maintained public restrooms is a given, not a gamble. 
-            Through transparent reviews and our "Clean It Up" initiative, we strive to:
+            Through transparent reviews and our "Cleanup Crusade" initiative, we strive to:
           </p>
           <ul className="list-disc list-inside space-y-2 pl-4">
             <li>Provide a reliable resource for finding quality restrooms.</li>
@@ -43,12 +44,12 @@ export default function AboutPage() {
 
           <h2 className="text-3xl font-headline text-secondary pt-6">How It Works</h2>
           <p>
-            Restroom Reviews is powered by you! Users like yourself can:
+            Throne Advisor is powered by you! Users like yourself can:
           </p>
           <ul className="list-disc list-inside space-y-2 pl-4">
-            <li><strong>Submit Reviews:</strong> Share your detailed experiences, rating restrooms on key aspects like cleanliness, smell, comfort, supplies, and security.</li>
-            <li><strong>Upload Photos:</strong> A picture speaks volumes! (Just remember The Porcelain Rule - no people in photos!)</li>
-            <li><strong>Nominate for "Clean It Up":</strong> Know a restroom that desperately needs attention? Nominate it for our program, and we'll work to encourage positive change.</li>
+            <li><strong>Share Stall Stories:</strong> Share your detailed experiences, rating restrooms on key aspects like cleanliness, smell, comfort, supplies, and security.</li>
+            <li><strong>Upload Photos:</strong> A picture speaks volumes! (Just remember The Proper Porcelain Policy - no people in photos!)</li>
+            <li><strong>Nominate for "Cleanup Crusade":</strong> Know a restroom that desperately needs attention? Nominate it for our program, and we'll work to encourage positive change.</li>
           </ul>
           
           <p className="mt-6">

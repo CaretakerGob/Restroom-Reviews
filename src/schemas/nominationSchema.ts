@@ -23,7 +23,7 @@ export const nominationSchema = z.object({
     )
     .optional(),
   noPeopleInPhoto: z.boolean().optional().default(false),
-  agreeToTerms: z.boolean().refine(val => val === true, { message: "You must agree to The Porcelain Rule." }),
+  agreeToTerms: z.boolean().refine(val => val === true, { message: "You must agree to The Proper Porcelain Policy." }),
 }).superRefine((data, ctx) => {
   if (data.photo && data.photo.length > 0 && !data.noPeopleInPhoto) {
     ctx.addIssue({

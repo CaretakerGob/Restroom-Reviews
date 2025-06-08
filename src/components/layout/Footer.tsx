@@ -1,3 +1,4 @@
+
 import Link from 'next/link';
 import { Twitter, Instagram, Youtube } from 'lucide-react';
 
@@ -8,7 +9,7 @@ const Footer = () => {
         <div className="flex justify-center space-x-6 mb-4">
           <Link href="/about" className="hover:text-accent transition-colors">About Us</Link>
           <Link href="/contact" className="hover:text-accent transition-colors">Contact</Link>
-          <Link href="/porcelain-rule" className="hover:text-accent transition-colors">The Porcelain Rule</Link>
+          <Link href="/porcelain-rule" className="hover:text-accent transition-colors">Proper Porcelain Policy</Link>
         </div>
         <div className="flex justify-center space-x-6 mb-6">
           <a href="https://twitter.com/yourprofile" target="_blank" rel="noopener noreferrer" aria-label="Twitter" className="hover:text-accent transition-colors">
@@ -21,10 +22,10 @@ const Footer = () => {
             <Youtube size={24} />
           </a>
           <a href="https://tiktok.com/@yourprofile" target="_blank" rel="noopener noreferrer" aria-label="TikTok" className="hover:text-accent transition-colors">
-            <span className="text-sm font-medium">TikTok</span>
+            <span className="text-sm font-medium">TikTok</span> {/* Consider a TikTok Lucide icon if/when available or an SVG */}
           </a>
         </div>
-        <p>&copy; {new Date().getFullYear()} Restroom Reviews. All rights reserved.</p>
+        <p>&copy; {new Date().getFullYear()} Throne Advisor. All rights reserved.</p>
       </div>
     </footer>
   );

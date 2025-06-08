@@ -7,8 +7,8 @@ import Footer from '@/components/layout/Footer';
 import { ThemeProvider } from '@/components/ThemeProvider';
 
 export const metadata: Metadata = {
-  title: 'Restroom Reviews',
-  description: 'Find and review restrooms with Restroom Reviews.',
+  title: 'Throne Advisor',
+  description: 'Find and review restrooms with Throne Advisor.',
 };
 
 export default function RootLayout({
