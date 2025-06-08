@@ -1,6 +1,7 @@
+
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, ReactNode } from 'react';
 import { CheckCircle2 } from 'lucide-react';
 
 interface ConfettiPiece {
@@ -17,7 +18,11 @@ interface ConfettiPiece {
 
 const colors = ["#E76F51", "#F4A261", "#264653", "#2A9D8F", "#E9C46A"];
 
-const ConfettiPlaceholder: React.FC = () => {
+interface ConfettiPlaceholderProps {
+  children?: ReactNode;
+}
+
+const ConfettiPlaceholder: React.FC<ConfettiPlaceholderProps> = ({ children }) => {
   const [pieces, setPieces] = useState<ConfettiPiece[]>([]);
 
   useEffect(() => {
@@ -94,10 +99,12 @@ const ConfettiPlaceholder: React.FC = () => {
         />
       ))}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-auto">
-        <div className="bg-card/90 p-8 rounded-lg shadow-2xl text-center max-w-md backdrop-blur-sm">
+        <div className="bg-card/90 p-8 rounded-lg shadow-2xl text-center max-w-lg backdrop-blur-sm">
           <CheckCircle2 className="w-16 h-16 text-green-500 mx-auto mb-4" />
           <h2 className="text-3xl font-headline font-bold text-primary mb-2">Thank You!</h2>
-          <p className="text-foreground/80 text-lg">Your submission has been received.</p>
+          {children ? children : (
+            <p className="text-foreground/80 text-lg">Your submission has been received.</p>
+          )}
         </div>
       </div>
     </div>
