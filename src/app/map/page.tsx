@@ -1,11 +1,22 @@
 
+'use client'; // This page now needs to be a client component for dynamic import and map interaction
+
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import Image from "next/image";
 import { MapPin, Filter, Star, Edit3, Search, Compass, Crosshair, PlusCircle } from "lucide-react";
+import dynamic from 'next/dynamic';
+import { mockReviewsData } from '@/lib/mockReviews'; // Import mock data
+
+// Dynamically import the map component with SSR turned off
+const InteractiveMapWithNoSSR = dynamic(() => import('@/components/InteractiveMap'), {
+  ssr: false,
+  loading: () => <div className="w-full h-[400px] md:h-[500px] bg-muted rounded-lg flex items-center justify-center"><p>Loading map...</p></div>,
+});
 
 export default function InteractiveMapPage() {
+  const reviews = mockReviewsData; // Use the imported mock data
+
   return (
     <div className="space-y-8">
       <Card className="shadow-lg">
@@ -28,7 +39,7 @@ export default function InteractiveMapPage() {
                 </Button>
               </div>
               <Button variant="outline" className="w-full sm:w-auto">
-                <Crosshair className="mr-2 h-5 w-5" /> Use My Location
+                <Crosshair className="mr-2 h-5 w-5" /> Use My Location (Future)
               </Button>
             </div>
 
@@ -44,24 +55,16 @@ export default function InteractiveMapPage() {
             </div>
           </div>
 
-          <div className="relative w-full h-[400px] md:h-[500px] bg-muted rounded-lg shadow-inner flex items-center justify-center border border-border overflow-hidden">
-            <Image
-              src="https://placehold.co/1200x800.png"
-              alt="Placeholder for interactive map interface"
-              fill
-              className="object-cover opacity-30"
-              data-ai-hint="world map"
-              priority
-            />
-            <div className="absolute inset-0 flex flex-col items-center justify-center p-4 text-center">
-                <MapPin size={64} className="text-primary mb-4 opacity-70" />
-                <h3 className="text-3xl font-semibold text-foreground/80 mb-2">Interactive Map Feature Coming Soon!</h3>
-                <p className="text-muted-foreground text-lg">Pinpoint your next pit stop with ease.</p>
-                 <Button variant="default" className="mt-6 shadow-md">
-                    <PlusCircle className="mr-2 h-5 w-5" /> Pin a New Restroom (Future)
-                </Button>
-            </div>
+          {/* Interactive Map Section */}
+          <div className="relative w-full h-[400px] md:h-[500px] bg-muted rounded-lg shadow-inner border border-border overflow-hidden">
+            <InteractiveMapWithNoSSR reviews={reviews} />
           </div>
+          <div className="text-center">
+            <Button variant="default" className="mt-6 shadow-md">
+                <PlusCircle className="mr-2 h-5 w-5" /> Pin a New Restroom (Future)
+            </Button>
+          </div>
+          
 
           <div className="pt-8">
             <h3 className="text-3xl font-headline text-secondary mb-6 text-center">Map Features Roadmap</h3>
@@ -113,7 +116,7 @@ export default function InteractiveMapPage() {
             </div>
           </div>
           <p className="text-center text-sm text-muted-foreground pt-6">
-            We're actively developing this feature. Stay tuned for a revolutionary way to navigate public restrooms!
+            We're actively developing this feature. Stay tuned for a revolutionary way to navigate public restrooms! Some features like 'Use My Location' and 'Pin a New Restroom' are planned for the future.
           </p>
         </CardContent>
       </Card>

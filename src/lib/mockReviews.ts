@@ -14,6 +14,8 @@ export interface Review {
   date: string; // ISO date string e.g., "2024-07-28"
   user?: string;
   imageUrl?: string;
+  latitude: number;
+  longitude: number;
 }
 
 export const mockReviewsData: Review[] = [
@@ -32,6 +34,8 @@ export const mockReviewsData: Review[] = [
     date: "2024-07-28T10:00:00Z",
     user: "FrequentCommuter",
     imageUrl: "https://placehold.co/600x400.png",
+    latitude: 40.7527, 
+    longitude: -73.9772,
   },
   {
     id: "2",
@@ -48,6 +52,8 @@ export const mockReviewsData: Review[] = [
     date: "2024-07-27T14:30:00Z",
     user: "CafeConnoisseur",
     imageUrl: "https://placehold.co/600x400.png",
+    latitude: 34.0522, 
+    longitude: -118.2437, // Los Angeles
   },
   {
     id: "3",
@@ -64,6 +70,8 @@ export const mockReviewsData: Review[] = [
     date: "2024-07-26T11:15:00Z",
     user: "BookwormBill",
     imageUrl: "https://placehold.co/600x400.png",
+    latitude: 41.8781, 
+    longitude: -87.6298, // Chicago
   },
   {
     id: "4",
@@ -80,6 +88,8 @@ export const mockReviewsData: Review[] = [
     date: "2024-07-25T18:00:00Z",
     user: "RoadWarrior",
     imageUrl: "https://placehold.co/600x400.png",
+    latitude: 39.9526, 
+    longitude: -75.1652, // Philadelphia
   },
   {
     id: "5",
@@ -96,6 +106,8 @@ export const mockReviewsData: Review[] = [
     date: "2024-07-29T09:20:00Z",
     user: "ParkGoerPatty",
     imageUrl: "https://placehold.co/600x400.png",
+    latitude: 30.2672, 
+    longitude: -97.7431, // Austin
   },
    {
     id: "6",
@@ -112,5 +124,7 @@ export const mockReviewsData: Review[] = [
     date: "2024-07-24T20:00:00Z",
     user: "CinemaFan",
     imageUrl: "https://placehold.co/600x400.png",
+    latitude: 40.7128,  // New York City (different from GCT)
+    longitude: -74.0060,
   },
 ];
