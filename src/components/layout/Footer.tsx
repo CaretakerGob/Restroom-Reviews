@@ -1,6 +1,6 @@
 
 import Link from 'next/link';
-import { Twitter, Instagram, Youtube } from 'lucide-react';
+import { Twitter, Instagram, Youtube, HelpCircle } from 'lucide-react'; // Added HelpCircle for anonymous tips
 
 const Footer = () => {
   return (
@@ -11,6 +11,7 @@ const Footer = () => {
           <Link href="/about" className="hover:text-accent transition-colors">About Us</Link>
           <Link href="/contact" className="hover:text-accent transition-colors">Contact</Link>
           <Link href="/porcelain-rule" className="hover:text-accent transition-colors">Proper Porcelain Policy</Link>
+          <Link href="/anonymous-tips" className="hover:text-accent transition-colors">Anonymous Tips</Link>
         </div>
         <div className="flex justify-center space-x-6 mb-6">
           <a href="https://twitter.com/yourprofile" target="_blank" rel="noopener noreferrer" aria-label="Twitter" className="hover:text-accent transition-colors">

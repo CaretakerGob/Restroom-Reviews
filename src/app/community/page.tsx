@@ -1,6 +1,6 @@
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Award, Star, Users, Construction, BadgeCheck, ShoppingBag } from "lucide-react";
+import { Award, Star, Users, Construction, BadgeCheck, ShoppingBag, GalleryHorizontalEnd, Sparkles } from "lucide-react";
 import Image from "next/image";
 import { generateCommunityImage } from "@/ai/flows/generate-community-image-flow";
 
@@ -39,10 +39,10 @@ export default async function CommunityPage() {
           <div className="flex flex-col items-center text-center p-6 bg-amber-100/50 dark:bg-amber-900/30 rounded-lg border border-amber-300 dark:border-amber-700 shadow-md max-w-2xl">
             <Construction className="h-16 w-16 text-amber-500 mb-4" />
             <h2 className="text-3xl font-headline text-secondary mb-2">
-              Feature Under Construction!
+              Features Under Construction!
             </h2>
             <p className="text-xl text-foreground/70 mt-2 mb-6">
-              We're busy building this awesome space to celebrate our amazing contributors. Get ready for leaderboards, cool badges, and more! Check back soon!
+              We're busy building this awesome space to celebrate our amazing contributors. Get ready for leaderboards, cool badges, impact galleries, and more! Check back soon!
             </p>
             <Image
               src={imageDataUri}
@@ -82,16 +82,34 @@ export default async function CommunityPage() {
                   <CardTitle className="text-xl text-accent">Lavatory Legend Badges</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-sm text-muted-foreground">Earn awesome digital (and maybe physical!) R&R Branded Badges like "Throne Tester," "Wipe Watcher," "Stall Sentinel," "Relief Ranger," and the coveted "Toilet Titan" award!</p>
+                  <p className="text-sm text-muted-foreground">Earn R&R Branded Badges like "Throne Tester," "Wipe Watcher," "Stall Sentinel," "Porcelain Paladin," "Relief Ranger," and the coveted "Toilet Titan" award!</p>
+                </CardContent>
+              </Card>
+              <Card className="bg-card-foreground/5 md:col-span-2 lg:col-span-3">
+                <CardHeader className="flex-row items-center gap-2 pb-2">
+                  <GalleryHorizontalEnd className="h-6 w-6 text-accent" />
+                  <CardTitle className="text-xl text-accent">Cleanup Crusade Impact Gallery</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-sm text-muted-foreground">Witness the transformations! A gallery showcasing before & after photos of restrooms revitalized through the "Cleanup Crusade" program, thanks to community nominations and efforts. See the positive change we can make together!</p>
                 </CardContent>
               </Card>
               <Card className="bg-card-foreground/5 lg:col-span-3">
                 <CardHeader className="flex-row items-center gap-2 pb-2">
                   <ShoppingBag className="h-6 w-6 text-accent" />
-                  <CardTitle className="text-xl text-accent">Porcelain Provisions (Merch Drop!)</CardTitle>
+                  <CardTitle className="text-xl text-accent">Porcelain Provisions Vol. 1 (Merch!)</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-sm text-muted-foreground">Get ready for "Porcelain Provisions Vol. 1"! We're planning fun merch like sticker packs ("Certified Clean by R&R"), "Flush Force" air fresheners, "Toilet Titan" shirts, and more. Show off your "Flush Fashionista" style!</p>
+                  <p className="text-sm text-muted-foreground">
+                    Get ready for "Porcelain Provisions"! We're planning fun merch:
+                  </p>
+                  <ul className="list-disc list-inside text-sm text-muted-foreground pl-4 mt-2 space-y-1">
+                    <li><strong>Sticker Packs:</strong> "Certified Clean by R&R" + Badge Icons.</li>
+                    <li><strong>Air Fresheners:</strong> "Flush Force" (Orange + Mint - "Smells like victory") & "This Stall Was Rated".</li>
+                    <li><strong>Shirts:</strong> "Toilet Titan" (Golden toilet chest print; Back: "We review where you do the doo."), "Flush Or Fail," "Porcelain Rule Enforcer," and "Cleanup Crew" Volunteer Tees.</li>
+                    <li><strong>Holographic Badge Decals:</strong> Collectible foil versions of your favorite badges.</li>
+                    <li><strong>"Flush Fashion" Zine:</strong> Mini comic/storybook with R&R lore and badge origins.</li>
+                  </ul>
                 </CardContent>
               </Card>
             </div>

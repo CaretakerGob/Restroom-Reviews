@@ -4,7 +4,7 @@
 import { useState } from 'react';
 import dynamic from 'next/dynamic';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Compass, Search, Filter, MapPin, Settings2, Construction } from "lucide-react";
+import { Compass, Search, Filter, MapPin, Settings2, Construction, AlertTriangle } from "lucide-react";
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -60,8 +60,10 @@ export default function InteractiveMapPage() {
             <p className="text-xl text-foreground/70 mt-2">
               This exciting feature is currently under construction and will be flowing soon!
             </p>
-            <p className="text-md text-muted-foreground mt-4">
-              We're working hard to bring you an amazing interactive map experience. Check back later!
+            <p className="text-md text-muted-foreground mt-4 max-w-xl">
+              We're working hard to bring you an amazing interactive map experience. 
+              Soon, you'll be able to use our "Panic Potty Portal" mode to auto-locate and get one-tap directions to the cleanest, highest-rated restroom nearby when you're in a hurry!
+              Check back later!
             </p>
             <Image
               src="https://placehold.co/600x300.png"

@@ -1,7 +1,7 @@
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { ShieldAlert, MapPin, Users, Award, TrendingUp, HandHelping } from "lucide-react";
+import { ShieldAlert, MapPin, Users, Award, TrendingUp, HandHelping, GalleryHorizontalEnd } from "lucide-react";
 
 export default function AdminPage() {
   return (
@@ -105,7 +105,8 @@ export default function AdminPage() {
               <li>View, edit, and delete submitted reviews.</li>
               <li>Approve or reject content before public display.</li>
               <li>Manage "Cleanup Crusade" program nominations and status.</li>
-              <li>Tag locations with a "Cleaned by Restroom Reviews" badge.</li>
+              <li>Tag locations with a "Cleaned by R&R" badge.</li>
+              <li>Manage "Cleanup Crusade Impact Gallery" (before/after photos).</li>
               <li>User management (view, roles, ban).</li>
               <li>Site analytics and reporting.</li>
               <li>Configuration for AI summarization parameters.</li>
