@@ -1,14 +1,16 @@
 
+export const dynamic = 'force-dynamic'; // Ensures the page is dynamically rendered
+
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Award, Star, Users, Construction, BadgeCheck, ShoppingBag, GalleryHorizontalEnd, Sparkles, Trophy, Zap, Eye, Shield, Crown, CheckSquare, Mop, Gift, FileText, DollarSign } from "lucide-react";
+import { Award, Star, Users, Construction, BadgeCheck, ShoppingBag, GalleryHorizontalEnd, Sparkles, Trophy, Zap, Eye, Shield, Crown, CheckSquare, Wrench, Gift, FileText, DollarSign } from "lucide-react"; // Replaced Mop with Wrench
 import Image from "next/image";
 import Link from "next/link";
 import { generateCommunityImage } from "@/ai/flows/generate-community-image-flow";
 
 export default async function CommunityPage() {
-  let imageDataUri = "https://placehold.co/600x300.png"; 
+  let imageDataUri = "https://placehold.co/600x300.png";
   let imageAlt = "Flush Force community features coming soon placeholder";
-  let generatedImageHint; 
+  let generatedImageHint;
 
   try {
     const imageResult = await generateCommunityImage({
@@ -20,7 +22,10 @@ export default async function CommunityPage() {
     }
   } catch (error) {
     console.error("Failed to generate community image:", error);
-    generatedImageHint = "community teamwork achievement"; 
+    // Fallback to placeholder if generation fails
+    imageDataUri = "https://placehold.co/600x300.png";
+    imageAlt = "Flush Force community features placeholder - image generation failed";
+    generatedImageHint = "community teamwork achievement";
   }
 
   return (
@@ -42,7 +47,7 @@ export default async function CommunityPage() {
               More Awesome Features Under Construction!
             </h2>
             <p className="text-xl text-foreground/70 mt-2 mb-6">
-              We're busy building this space to celebrate our amazing contributors. Get ready for leaderboards, detailed badge tracking, impact galleries, fan spotlights, and more! Check back soon for "Potty Prestige" and XP trackers!
+              We're busy building this space to celebrate our amazing contributors. Get ready for leaderboards, detailed badge tracking, the "Cleanup Crusade Impact Gallery", fan spotlights, and more! Check back soon for "Potty Prestige" and XP trackers!
             </p>
             <Image
               src={imageDataUri}
@@ -51,7 +56,7 @@ export default async function CommunityPage() {
               height={300}
               className="rounded-lg shadow-md opacity-80"
               priority={imageDataUri.startsWith('data:')}
-              data-ai-hint={generatedImageHint}
+              data-ai-hint={generatedImageHint || "community teamwork achievement"}
             />
           </div>
 
@@ -92,7 +97,7 @@ export default async function CommunityPage() {
                         <li><Crown size={12} className="inline mr-1" /> Toilet Titan (Top Leaderboard)</li>
                         <li><Trophy size={12} className="inline mr-1" /> Lavatory Legend (Consistent Top Ratings)</li>
                         <li><CheckSquare size={12} className="inline mr-1" /> Wipe Watcher (Report Supply Issues)</li>
-                        <li><Mop size={12} className="inline mr-1" /> Relief Ranger (Community Cleanup)</li>
+                        <li><Wrench size={12} className="inline mr-1" /> Relief Ranger (Community Cleanup)</li> {/* Replaced Mop with Wrench */}
                     </ul>
                      (Full tracking and display coming soon!)
                   </p>
@@ -117,9 +122,9 @@ export default async function CommunityPage() {
                     Get ready for "Porcelain Provisions"! Future drops might include:
                   </p>
                   <ul className="list-disc list-inside text-sm text-muted-foreground pl-4 mt-2 space-y-1">
-                    <li><strong>Sticker Packs:</strong> "Certified Clean by R&R" + Badge Icons.</li>
+                    <li><strong>Sticker Packs:</strong> "Certified Clean by R&R" + Badge Icons (Throne Tester, Paladin, Titan).</li>
                     <li><strong>Air Fresheners:</strong> Flush Force (Orange + Mint - "Smells like victory"), "This Stall Was Rated".</li>
-                    <li><strong>Shirts:</strong> "Toilet Titan" (Golden toilet chest print; Back: "We review where you do the doo."), "Flush Or Fail," "Porcelain Rule Enforcer."</li>
+                    <li><strong>Shirts:</strong> "Toilet Titan" (Golden toilet chest print; Back: “We review where you do the doo.”), "Flush Or Fail," "Porcelain Rule Enforcer."</li>
                     <li><strong>Volunteer Tee:</strong> “Cleanup Crew” / “Relief Ranger”.</li>
                     <li><strong>Holographic Badge Decals:</strong> Collectible foil versions of your favorite badges.</li>
                     <li><strong>“Flush Fashion” Zine:</strong> Mini comic/storybook with R&R lore and badge origins.</li>
