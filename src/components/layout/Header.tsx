@@ -22,6 +22,7 @@ import {
   HelpCircle,
   Info,
   ChevronDown,
+  Contact,
 } from 'lucide-react';
 import { useTheme } from '@/components/ThemeProvider';
 import {
@@ -75,8 +76,8 @@ const navGroups: NavGroup[] = [
     triggerIcon: <Info />,
     items: [
       { href: '/about', label: 'About Us', icon: <Info /> },
-      { href: '/contact', label: 'Contact', icon: <MessageSquareText /> }, // Using MessageSquareText as a generic contact icon
-      { href: '/porcelain-rule', label: 'Proper Porcelain Policy', icon: <ShieldCheck /> },
+      { href: '/contact', label: 'Contact', icon: <Contact /> }, 
+      { href: '/porcelain-rule', label: 'Porcelain Rules', icon: <ShieldCheck /> },
     ],
   },
 ];

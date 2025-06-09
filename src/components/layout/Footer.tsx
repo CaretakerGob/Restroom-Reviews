@@ -1,6 +1,6 @@
 
 import Link from 'next/link';
-import { Twitter, Instagram, Youtube, HelpCircle, Shield, FileText, Home, Info, Accessibility, DollarSign, Languages } from 'lucide-react';
+import { Twitter, Instagram, Youtube, HelpCircle, Shield, FileText, Home, Info, Accessibility, DollarSign, Languages, Contact } from 'lucide-react';
 
 // Placeholder for TikTok icon
 const TikTokIcon = () => (
@@ -16,8 +16,8 @@ const Footer = () => {
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 mb-6 text-sm">
           <Link href="/" className="hover:text-accent transition-colors flex items-center justify-center gap-1"><Home size={16}/>Home</Link>
           <Link href="/about" className="hover:text-accent transition-colors flex items-center justify-center gap-1"><Info size={16}/>About Us</Link>
-          <Link href="/contact" className="hover:text-accent transition-colors flex items-center justify-center gap-1">Contact</Link>
-          <Link href="/porcelain-rule" className="hover:text-accent transition-colors flex items-center justify-center gap-1"><Shield size={16}/>Proper Porcelain Policy</Link>
+          <Link href="/contact" className="hover:text-accent transition-colors flex items-center justify-center gap-1"><Contact size={16}/>Contact</Link>
+          <Link href="/porcelain-rule" className="hover:text-accent transition-colors flex items-center justify-center gap-1"><Shield size={16}/>Porcelain Rules</Link>
           <Link href="/anonymous-tips" className="hover:text-accent transition-colors flex items-center justify-center gap-1"><HelpCircle size={16}/>Anonymous Tips</Link>
           <Link href="/privacy-policy" className="hover:text-accent transition-colors flex items-center justify-center gap-1"><FileText size={16}/>Privacy Policy</Link>
           <Link href="/terms-of-use" className="hover:text-accent transition-colors flex items-center justify-center gap-1"><FileText size={16}/>Terms of Use</Link>

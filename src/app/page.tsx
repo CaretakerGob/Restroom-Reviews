@@ -4,9 +4,8 @@ import ThePorcelainRuleModal from '@/components/ThePorcelainRuleModal';
 import Link from 'next/link';
 import Image from 'next/image';
 import TestimonialSlider from '@/components/TestimonialSlider';
-import { HandHelping, Edit3, Users, MapPin, Instagram, Youtube, Info } from 'lucide-react'; // Added Info icon
+import { HandHelping, Edit3, Users, MapPin, Instagram, Youtube, Info, MessageSquareText, ShieldCheck } from 'lucide-react';
 
-// Placeholder for TikTok icon
 const TikTokIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
     <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.73-.21.52-.3.97-.28 1.5.05.92.48 1.86 1.17 2.55.88.88 2.13 1.31 3.31 1.11.09-1.54.03-3.08.02-4.61h2.08Z"/>
@@ -49,7 +48,7 @@ export default function Home() {
           <li><strong>Find a Relief Route:</strong> Use our map to find reviewed restrooms near you.</li>
         </ul>
         <p className="mt-3 text-foreground/80">
-          Before you dive in, please check out our <Link href="/porcelain-rule" className="text-primary underline hover:text-accent">Proper Porcelain Policy</Link> to keep things flushing smoothly.
+          Before you dive in, please check out our <Link href="/porcelain-rule" className="text-primary underline hover:text-accent">Porcelain Rules</Link> to keep things flushing smoothly.
         </p>
       </section>
 
@@ -70,7 +69,10 @@ export default function Home() {
       </section>
 
       <section className="max-w-xl p-6 bg-card rounded-lg shadow-lg border border-border">
-        <h2 className="text-2xl font-bold mb-4 text-accent">The Proper Porcelain Policy</h2>
+        <div className="flex items-center justify-center gap-2 mb-2">
+            <ShieldCheck className="h-7 w-7 text-accent" />
+            <h2 className="text-2xl font-bold text-accent">Porcelain Rules</h2>
+        </div>
         <p className="text-foreground/80 mb-4">
           Before you contribute, please familiarize yourself with our community guidelines. It's how we keep things flushing smoothly!
         </p>
@@ -103,6 +105,7 @@ export default function Home() {
         <h2 className="text-3xl font-bold mb-6 text-primary">Follow Us & Join the Movement!</h2>
         <p className="text-lg text-foreground/80 mb-6">
           Get the latest updates, see featured reviews, and join the conversation on our social channels!
+          <br /> We'll feature "Restroom of the Month" and "Weekly Hilarious/Heroic Stall Stories" soon!
         </p>
         <div className="flex justify-center space-x-6">
           <a href="https://twitter.com/yourprofile" target="_blank" rel="noopener noreferrer" aria-label="Twitter" className="text-secondary-foreground hover:text-accent transition-colors">

@@ -16,38 +16,32 @@ const ThePorcelainRuleModal = () => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="outline">The Proper Porcelain Policy</Button>
+        <Button variant="outline" size="sm" className="text-xs p-1 md:p-2 md:text-sm">View Porcelain Rules</Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-lg bg-card max-h-[80vh] overflow-y-auto">
         <DialogHeader>
-          <DialogTitle className="font-headline text-primary">The Proper Porcelain Policy</DialogTitle>
+          <DialogTitle className="font-headline text-primary">Porcelain Rules</DialogTitle>
           <DialogDescription className="text-foreground">
-            Our community guidelines for respectful and helpful reviews & nominations.
+            Key community guidelines for respectful reviews & nominations. Our "PP" (Primary Principles!) help keep things flushing smoothly.
           </DialogDescription>
         </DialogHeader>
         <div className="py-4 space-y-3 text-sm text-foreground">
-          <p><strong>Be Honest & Fair:</strong> Provide genuine feedback based on your experience. Exaggerations or false claims don't help anyone.</p>
-          <p><strong>Be Specific:</strong> Details matter! Mention specifics about cleanliness, amenities, smell, and security.</p>
-          <p><strong>Keep it Clean (Figuratively!):</strong> No offensive language, hate speech, or personal attacks.</p>
-          <p><strong>Photo Submissions: Privacy First:</strong> If you upload photos, ensure they are relevant and DO NOT include any people or personally identifiable information.</p>
-          <p><strong>Respect Privacy (General):</strong> Do not share personal information about restroom staff or other patrons.</p>
-          <p><strong>Constructive Criticism for Nominations:</strong> When nominating for the "Cleanup Crusade," be clear and constructive.</p>
+          <p><strong>Be Honest & Fair:</strong> Provide genuine feedback.</p>
+          <p><strong>Be Specific:</strong> Details matter!</p>
+          <p><strong>Keep it Clean (Figuratively!):</strong> No offensive language.</p>
+          <p><strong>Photo Submissions: Privacy First:</strong> DO NOT include any people in photos.</p>
+          <p><strong>Respect Privacy (General):</strong> Focus on the facility.</p>
+          <p><strong>Constructive Criticism for Nominations:</strong> Be clear and constructive.</p>
           
           <div className="pt-2 mt-2 border-t">
             <h4 className="font-semibold text-base text-secondary mt-2 mb-1">Content Submission & Usage:</h4>
-            <p>By submitting reviews, nominations, or photos ("Submissions"), you agree:</p>
-            <ul className="list-disc list-inside pl-4 space-y-1">
-              <li>You confirm no identifiable individuals are in any photos.</li>
-              <li>You grant Restroom Reviews a non-exclusive, royalty-free, worldwide license to use, review, edit, adapt, publish, translate, create derivative works from, distribute, and display your Submissions in any media.</li>
-              <li>You understand Restroom Reviews may manage submissions according to our content strategy and guidelines.</li>
-            </ul>
-            <p className="mt-1">We are committed to respecting privacy and these guidelines in all uses of submitted material.</p>
+            <p>By submitting content, you grant Restroom Reviews a license to use it and confirm you have rights to share it (especially photos without people).</p>
           </div>
 
           <p className="mt-4">
-            For full details, please see the <Link href="/porcelain-rule" className="text-primary underline hover:text-accent">full Proper Porcelain Policy page</Link>.
+            For full details, please see the <Link href="/porcelain-rule" className="text-primary underline hover:text-accent" target="_blank" rel="noopener noreferrer">full Porcelain Rules page</Link>.
           </p>
-          <p className="font-semibold mt-2">By submitting any content, you agree to abide by The Proper Porcelain Policy in its entirety. Let's keep Restroom Reviews a helpful and respectful community!</p>
+          <p className="font-semibold mt-2">By submitting any content, you agree to abide by the Porcelain Rules in their entirety. Let's keep Restroom Reviews a helpful and respectful community!</p>
         </div>
       </DialogContent>
     </Dialog>

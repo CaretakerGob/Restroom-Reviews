@@ -53,7 +53,7 @@ const ReviewForm = () => {
       noPeopleInPhoto: false,
       comments: '',
       agreeToTerms: false,
-      allowSocialShare: false, // New field
+      allowSocialShare: false,
     },
   });
 
@@ -213,7 +213,7 @@ const ReviewForm = () => {
                 )}
               />
             <Label htmlFor="agreeToTerms" className="text-sm font-normal flex items-center gap-1">
-              I agree to <ThePorcelainRuleModal />
+              I agree to the <ThePorcelainRuleModal />
             </Label>
           </div>
           {errors.agreeToTerms && <p className="text-sm text-destructive">{errors.agreeToTerms.message}</p>}
@@ -242,7 +242,7 @@ const ReviewForm = () => {
               </p>
             </div>
           </div>
-          {/* No error display for this optional field for now */}
+          {state.errors?.allowSocialShare && <p className="text-sm text-destructive">{state.errors.allowSocialShare.join(', ')}</p>}
 
         </CardContent>
         <CardFooter>

@@ -1,6 +1,6 @@
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { CheckSquare, ShieldCheck } from "lucide-react";
+import { CheckSquare, ShieldCheck, Smile } from "lucide-react";
 
 const rules = [
   { 
@@ -39,19 +39,30 @@ export default function PorcelainRulePage() {
     <div className="space-y-8">
       <Card className="shadow-lg">
         <CardHeader className="text-center">
-          <CardTitle className="text-4xl font-headline text-primary">The Proper Porcelain Policy</CardTitle>
+          <CardTitle className="text-4xl font-headline text-primary">Porcelain Rules</CardTitle>
           <CardDescription className="text-lg text-foreground/80">
             Our community guidelines for respectful, helpful, and effective reviews and nominations. 
-            Let's keep Restroom Reviews a trusted resource!
+            Let's keep Restroom Reviews a trusted and respectful resource!
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">
+          
+          <div className="bg-amber-100/50 dark:bg-amber-900/30 p-6 rounded-lg border border-amber-300 dark:border-amber-700">
+            <h3 className="text-3xl font-headline text-secondary flex items-center gap-2">
+              <Smile className="h-8 w-8 text-secondary" /> Our Porcelain Policy (PP - PEE PEE 😉)
+            </h3>
+            <p className="text-foreground/80 leading-relaxed mt-2 mb-4 text-md">
+              Welcome to the heart of how we keep things flowing smoothly! These are our Primary Principles (PP) for community conduct. 
+              Think of them as the essential etiquette for our shared quest for better restrooms.
+            </p>
+          </div>
+
           {rules.map((rule, index) => (
             <Card key={index} className="bg-card-foreground/5 border-border">
               <CardHeader className="flex flex-row items-start space-x-3 pb-3">
                 <CheckSquare className="w-8 h-8 text-accent flex-shrink-0 mt-1" />
                 <div>
-                  <h3 className="text-2xl font-headline text-secondary">{rule.title}</h3>
+                  <h4 className="text-2xl font-headline text-secondary">{rule.title}</h4>
                   <p className="text-foreground/80 leading-relaxed mt-1">{rule.description}</p>
                 </div>
               </CardHeader>
@@ -70,7 +81,7 @@ export default function PorcelainRulePage() {
 
           <div className="text-center pt-6">
             <p className="text-lg font-semibold text-primary">
-              By submitting a review or nomination, you agree to abide by The Proper Porcelain Policy, including the Content Submission & Usage terms.
+              By submitting a review or nomination, you agree to abide by our Porcelain Rules, including the Content Submission & Usage terms.
             </p>
             <p className="text-foreground/80 mt-2">
               Thank you for helping us maintain a positive and constructive community!

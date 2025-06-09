@@ -46,7 +46,7 @@ const NominationForm = () => {
       photo: undefined,
       noPeopleInPhoto: false,
       agreeToTerms: false,
-      allowSocialShare: false, // New field
+      allowSocialShare: false,
     }
   });
 
@@ -178,7 +178,7 @@ const NominationForm = () => {
                   )}
                 />
               <Label htmlFor="nominationAgreeToTerms" className="text-sm font-normal flex items-center gap-1">
-                I agree to <ThePorcelainRuleModal />
+                I agree to the <ThePorcelainRuleModal />
               </Label>
             </div>
             {errors.agreeToTerms && <p className="text-sm text-destructive">{errors.agreeToTerms.message}</p>}
@@ -208,7 +208,7 @@ const NominationForm = () => {
               </p>
             </div>
           </div>
-           {/* No error display for this optional field for now */}
+           {state.errors?.allowSocialShare && <p className="text-sm text-destructive">{state.errors.allowSocialShare.join(', ')}</p>}
 
         </CardContent>
         <CardFooter>

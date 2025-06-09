@@ -36,7 +36,7 @@ export default function TermsOfUsePage() {
 
           <h2 className="text-2xl font-headline text-secondary">2. User Conduct and Content (Placeholder)</h2>
           <p>
-            You are responsible for your conduct and any content you submit, post, or display on or via the Service. You agree to abide by our community guidelines, known as <Link href="/porcelain-rule" className="text-primary underline">The Proper Porcelain Policy</Link>, which is incorporated by reference into these Terms.
+            You are responsible for your conduct and any content you submit, post, or display on or via the Service. You agree to abide by our community guidelines, known as the <Link href="/porcelain-rule" className="text-primary underline">Porcelain Rules</Link>, which is incorporated by reference into these Terms.
           </p>
           <p>
             Prohibited content and activities will include, but are not limited to: illegal content, harassment, impersonation, intellectual property infringement, and posting content with identifiable individuals without consent (especially in photos).
@@ -47,7 +47,7 @@ export default function TermsOfUsePage() {
             By submitting content (reviews, nominations, photos, comments, etc.), you grant Restroom Reviews a worldwide, non-exclusive, royalty-free, sublicensable, and transferable license to use, reproduce, distribute, prepare derivative works of, display, and perform the content in connection with the Service and Restroom Reviews' (and its successors' and affiliates') business.
           </p>
           <p>
-            You affirm, represent, and warrant that you own or have the necessary licenses, rights, consents, and permissions to publish content you submit. Crucially, you confirm that no identifiable individuals are depicted in any photos you upload, as per The Proper Porcelain Policy.
+            You affirm, represent, and warrant that you own or have the necessary licenses, rights, consents, and permissions to publish content you submit. Crucially, you confirm that no identifiable individuals are depicted in any photos you upload, as per the <Link href="/porcelain-rule" className="text-primary underline">Porcelain Rules</Link>.
           </p>
           <p>
             We reserve the right to remove or modify user content for any reason, including content that we believe violates these Terms or our policies.
