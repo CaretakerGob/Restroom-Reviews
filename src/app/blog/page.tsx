@@ -13,21 +13,21 @@ export default function BlogPage() {
             <MessageSquareText className="h-9 w-9" /> 💬 Bathroom Buzz
           </CardTitle>
           <CardDescription className="text-lg text-foreground/80">
-            News, tips, and musings from the world of restrooms.
+            News, tips, musings, and "Weekly Spotlights" from the world of restrooms. (More articles and features coming soon!)
           </CardDescription>
         </CardHeader>
         <CardContent>
           {mockBlogPosts.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {mockBlogPosts
-                .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()) 
+                .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
                 .map((post) => (
                   <BlogPostPreviewCard key={post.id} post={post} />
               ))}
             </div>
           ) : (
             <p className="text-center text-foreground/70 text-lg">
-              No posts yet. Check back soon!
+              No posts yet. Check back soon for our latest buzz!
             </p>
           )}
         </CardContent>

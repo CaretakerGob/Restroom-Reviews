@@ -16,7 +16,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { useToast } from '@/hooks/use-toast';
 import { useRouter } from 'next/navigation';
-import { UploadCloud, HandHelping } from 'lucide-react';
+import { UploadCloud, HandHelping, Share2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import ThePorcelainRuleModal from '@/components/ThePorcelainRuleModal';
 
@@ -46,6 +46,7 @@ const NominationForm = () => {
       photo: undefined,
       noPeopleInPhoto: false,
       agreeToTerms: false,
+      allowSocialShare: false, // New field
     }
   });
 
@@ -138,7 +139,7 @@ const NominationForm = () => {
             </div>
             {errors.photo && <p className="text-sm text-destructive mt-1">{errors.photo.message as string}</p>}
             {state.errors?.photo && <p className="text-sm text-destructive mt-1">{state.errors.photo.join(', ')}</p>}
-            
+
             {watchedPhoto && watchedPhoto.length > 0 && (
               <div className="flex items-center space-x-2 mt-2">
                 <Controller
@@ -183,6 +184,31 @@ const NominationForm = () => {
             {errors.agreeToTerms && <p className="text-sm text-destructive">{errors.agreeToTerms.message}</p>}
             {state.errors?.agreeToTerms && <p className="text-sm text-destructive">{state.errors.agreeToTerms.join(', ')}</p>}
           </div>
+
+          <div className="flex items-start space-x-2 pt-2">
+            <Controller
+              name="allowSocialShare"
+              control={control}
+              render={({ field }) => (
+                <Checkbox
+                  id="nominationAllowSocialShare"
+                  checked={field.value}
+                  onCheckedChange={field.onChange}
+                  name="allowSocialShare"
+                  className="mt-1"
+                />
+              )}
+            />
+            <div className="grid gap-1.5 leading-none">
+              <Label htmlFor="nominationAllowSocialShare" className="text-sm font-normal flex items-center gap-1">
+                <Share2 size={14} className="mr-1"/> Okay to feature this submission on social media?
+              </Label>
+              <p className="text-xs text-muted-foreground">
+                If selected, we may reach out to you. Your name/email (if provided) may be used for contact.
+              </p>
+            </div>
+          </div>
+           {/* No error display for this optional field for now */}
 
         </CardContent>
         <CardFooter>

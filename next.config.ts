@@ -1,3 +1,4 @@
+
 import type {NextConfig} from 'next';
 
 const nextConfig: NextConfig = {
@@ -24,6 +25,10 @@ const nextConfig: NextConfig = {
       }
     ],
   },
+  // Recommended: Add a valid basePath if your app is not at the domain root
+  // basePath: '/myapp', // Example
+  // Recommended: Add a valid assetPrefix if serving assets from a CDN
+  // assetPrefix: 'https://cdn.mydomain.com', // Example
 };
 
 export default nextConfig;

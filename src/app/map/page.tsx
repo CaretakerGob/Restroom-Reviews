@@ -4,31 +4,29 @@
 import { useState } from 'react';
 import dynamic from 'next/dynamic';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Compass, Search, Filter, MapPin, Settings2, Construction, AlertTriangle } from "lucide-react";
+import { Compass, Search, Filter, MapPin, Settings2, Construction, AlertTriangle, History, Navigation } from "lucide-react";
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Skeleton } from '@/components/ui/skeleton';
 import Image from 'next/image';
+import { Label } from '@/components/ui/label';
 
-// Dynamically import the map component to ensure it's client-side only
+
 const InteractiveMap = dynamic(() => import('@/components/InteractiveMap'), {
   ssr: false,
   loading: () => <Skeleton className="w-full h-[500px] rounded-lg" />,
 });
 
-// Mock reviews data - in a real app, this would come from an API
 const mockReviews = [
   { id: '1', locationName: 'Grand Central', address: 'New York', latitude: 40.7527, longitude: -73.9772, overallRating: 4 },
   { id: '2', locationName: 'The Bean Scene', address: 'Pleasantville', latitude: 34.0522, longitude: -118.2437, overallRating: 5 },
-  // Add more mock reviews as needed
 ];
 
 export default function InteractiveMapPage() {
   const [searchTerm, setSearchTerm] = useState('');
   const [filterCriteria, setFilterCriteria] = useState('all');
 
-  // Placeholder for search/filter logic
   const handleSearch = () => {
     console.log('Searching for:', searchTerm);
   };
@@ -38,7 +36,7 @@ export default function InteractiveMapPage() {
     console.log('Filter changed to:', value);
   };
 
-  const showComingSoonMessage = true; // Set to true to show coming soon message
+  const showComingSoonMessage = true; 
 
   if (showComingSoonMessage) {
     return (
@@ -49,21 +47,24 @@ export default function InteractiveMapPage() {
               <MapPin className="h-10 w-10" /> 📍 Lavatory Locator
             </CardTitle>
             <CardDescription className="text-lg text-foreground/80">
-              Our map feature is currently under construction. Find relief routes near you soon!
+              Our interactive map is getting a major upgrade! Find relief routes near you soon.
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-6 flex flex-col items-center justify-center text-center min-h-[500px]">
             <Construction className="h-24 w-24 text-primary opacity-50 mb-6" />
             <h2 className="text-3xl font-headline text-secondary">
-              Our Map Pipes are a Bit Clogged...
+              Our Map Pipes are Being Rerouted!
             </h2>
-            <p className="text-xl text-foreground/70 mt-2">
-              This exciting feature is currently under construction and will be flowing soon!
+            <p className="text-xl text-foreground/70 mt-2 max-w-xl">
+              This exciting feature is currently under construction and will be flowing soon! We're working on:
             </p>
-            <p className="text-md text-muted-foreground mt-4 max-w-xl">
-              We're working hard to bring you an amazing interactive map experience. 
-              Soon, you'll be able to use our "Panic Potty Portal" mode to auto-locate and get one-tap directions to the cleanest, highest-rated restroom nearby when you're in a hurry!
-              Check back later!
+            <ul className="list-disc list-inside text-left text-foreground/70 mt-4 space-y-2 max-w-md">
+                <li>Detailed search and filtering (by name, rating, "Cleaned by R&R", tags like restaurant/park).</li>
+                <li><strong>Panic Potty Portal / Emergency Mode:</strong> One-tap directions to the cleanest, highest-rated restroom nearby when you're in a hurry!</li>
+                <li>User location auto-detection for "restrooms near me".</li>
+            </ul>
+            <p className="text-md text-muted-foreground mt-4">
+              Check back later for the ultimate restroom finding experience!
             </p>
             <Image
               src="https://placehold.co/600x300.png"
@@ -71,7 +72,7 @@ export default function InteractiveMapPage() {
               width={600}
               height={300}
               className="mt-8 rounded-lg shadow-md opacity-70"
-              data-ai-hint="construction map"
+              data-ai-hint="construction map compass"
             />
           </CardContent>
         </Card>
@@ -79,6 +80,7 @@ export default function InteractiveMapPage() {
     );
   }
 
+  // Actual map display (currently unreachable due to showComingSoonMessage = true)
   return (
     <div className="space-y-8">
       <Card className="shadow-lg">
@@ -134,6 +136,3 @@ export default function InteractiveMapPage() {
     </div>
   );
 }
-
-// Ensure Label is imported or defined if used standalone like above. Assuming it comes from '@/components/ui/label'
-import { Label } from '@/components/ui/label';

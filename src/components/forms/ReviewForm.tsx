@@ -17,7 +17,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { useToast } from '@/hooks/use-toast';
 import { useRouter } from 'next/navigation';
-import { UploadCloud, Edit3 } from 'lucide-react';
+import { UploadCloud, Edit3, Share2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import ThePorcelainRuleModal from '@/components/ThePorcelainRuleModal';
 
@@ -53,6 +53,7 @@ const ReviewForm = () => {
       noPeopleInPhoto: false,
       comments: '',
       agreeToTerms: false,
+      allowSocialShare: false, // New field
     },
   });
 
@@ -138,7 +139,7 @@ const ReviewForm = () => {
               </div>
             ))}
           </div>
-          
+
           <div className="space-y-2">
             <Label>Photo (Optional)</Label>
             <div className="flex items-center gap-3">
@@ -178,7 +179,7 @@ const ReviewForm = () => {
                       id="noPeopleInPhoto"
                       checked={field.value}
                       onCheckedChange={field.onChange}
-                      name="noPeopleInPhoto" 
+                      name="noPeopleInPhoto"
                     />
                   )}
                 />
@@ -207,7 +208,7 @@ const ReviewForm = () => {
                     id="agreeToTerms"
                     checked={field.value}
                     onCheckedChange={field.onChange}
-                    name="agreeToTerms" 
+                    name="agreeToTerms"
                   />
                 )}
               />
@@ -217,6 +218,32 @@ const ReviewForm = () => {
           </div>
           {errors.agreeToTerms && <p className="text-sm text-destructive">{errors.agreeToTerms.message}</p>}
           {state.errors?.agreeToTerms && <p className="text-sm text-destructive">{state.errors.agreeToTerms.join(', ')}</p>}
+
+          <div className="flex items-start space-x-2 pt-2">
+            <Controller
+              name="allowSocialShare"
+              control={control}
+              render={({ field }) => (
+                <Checkbox
+                  id="allowSocialShare"
+                  checked={field.value}
+                  onCheckedChange={field.onChange}
+                  name="allowSocialShare"
+                  className="mt-1"
+                />
+              )}
+            />
+            <div className="grid gap-1.5 leading-none">
+              <Label htmlFor="allowSocialShare" className="text-sm font-normal flex items-center gap-1">
+                <Share2 size={14} className="mr-1"/> Okay to feature this submission on social media?
+              </Label>
+              <p className="text-xs text-muted-foreground">
+                If selected, we may reach out to you. Your username may be shown.
+              </p>
+            </div>
+          </div>
+          {/* No error display for this optional field for now */}
+
         </CardContent>
         <CardFooter>
           <Button type="submit" className="w-full" disabled={isSubmitting}>

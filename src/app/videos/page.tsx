@@ -2,18 +2,20 @@
 import { mockVideosData, type Video } from '@/lib/mockVideos';
 import VideoCard from '@/components/VideoCard';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Film, Tv } from 'lucide-react';
 
 export default function VideosPage() {
-  // In a real app, you'd fetch videos here.
   const videos: Video[] = mockVideosData;
 
   return (
     <div className="space-y-8">
       <Card className="shadow-lg">
         <CardHeader className="text-center">
-          <CardTitle className="text-4xl font-headline text-primary">Restroom Reels</CardTitle>
+          <CardTitle className="text-4xl font-headline text-primary flex items-center justify-center gap-2">
+            <Tv className="h-9 w-9"/> Restroom Reels
+          </CardTitle>
           <CardDescription className="text-lg text-foreground/80">
-            Watch transformations, horror stories, and community highlights!
+            Watch transformations, horror stories, community highlights, and our "Restroom of the Month" spotlights! (More content coming soon!)
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -25,7 +27,7 @@ export default function VideosPage() {
             </div>
           ) : (
             <p className="text-center text-foreground/70 text-lg">
-              No videos available at the moment. Check back soon!
+              No videos available at the moment. Check back soon for hilarious fails, amazing cleanups, and more!
             </p>
           )}
         </CardContent>

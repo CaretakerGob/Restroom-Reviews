@@ -1,7 +1,7 @@
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { ShieldAlert, MapPin, Users, Award, TrendingUp, HandHelping, GalleryHorizontalEnd } from "lucide-react";
+import { ShieldAlert, MapPin, Users, Award, TrendingUp, HandHelping, GalleryHorizontalEnd, Settings, BarChart3, MessageSquareWarning } from "lucide-react";
 
 export default function AdminPage() {
   return (
@@ -18,7 +18,7 @@ export default function AdminPage() {
             <ShieldAlert className="h-5 w-5" />
             <AlertTitle className="font-headline">Protected Area</AlertTitle>
             <AlertDescription>
-              This section is for administrators only. Full functionality requires Firebase Authentication.
+              This section is for administrators only. Full functionality requires Firebase Authentication and role-based access control.
             </AlertDescription>
           </Alert>
 
@@ -98,18 +98,18 @@ export default function AdminPage() {
               </CardContent>
             </Card>
           </div>
-          
+
           <div className="mt-8 p-6 border rounded-lg">
             <h3 className="text-2xl font-headline text-secondary mb-4">Future Admin Functionality</h3>
             <ul className="list-disc list-inside space-y-2 text-foreground/80">
-              <li>View, edit, and delete submitted reviews.</li>
-              <li>Approve or reject content before public display.</li>
-              <li>Manage "Cleanup Crusade" program nominations and status.</li>
-              <li>Tag locations with a "Cleaned by R&R" badge.</li>
-              <li>Manage "Cleanup Crusade Impact Gallery" (before/after photos).</li>
-              <li>User management (view, roles, ban).</li>
-              <li>Site analytics and reporting.</li>
-              <li>Configuration for AI summarization parameters.</li>
+              <li><Settings className="inline h-4 w-4 mr-1" /> View, edit, and delete submitted reviews & anonymous tips.</li>
+              <li><Users className="inline h-4 w-4 mr-1" /> User management (view profiles, assign roles like Moderator, ban users).</li>
+              <li><MessageSquareWarning className="inline h-4 w-4 mr-1" /> Content moderation queue for reviews, nominations, and tips.</li>
+              <li><HandHelping className="inline h-4 w-4 mr-1" /> Manage "Cleanup Crusade" program nominations, status, and assign "Cleaned by R&R" badges.</li>
+              <li><GalleryHorizontalEnd className="inline h-4 w-4 mr-1" /> Manage "Cleanup Crusade Impact Gallery" (before/after photos).</li>
+              <li><BarChart3 className="inline h-4 w-4 mr-1" /> Site analytics and reporting (review trends, user engagement).</li>
+              <li><Settings className="inline h-4 w-4 mr-1" /> Configuration for AI summarization parameters and other site settings.</li>
+              <li><Award className="inline h-4 w-4 mr-1" /> Badge management and awarding system.</li>
             </ul>
           </div>
         </CardContent>

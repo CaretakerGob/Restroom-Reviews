@@ -10,20 +10,21 @@ export const nominationSchema = z.object({
   businessLocation: z.string().min(5, { message: "Business location must be at least 5 characters." }),
   reason: z.string().min(20, { message: "Reason must be at least 20 characters." }).max(1000, { message: "Reason cannot exceed 1000 characters." }),
   photo: z.any()
-    .refine((files) => {
-      if (!files || files.length === 0) return true; // Optional, so no file is fine
-      return files[0]?.size <= MAX_FILE_SIZE;
+    .refine((fileList) => { // Changed to fileList to reflect HTML input type="file"
+      if (!fileList || fileList.length === 0) return true; // Optional, so no file is fine
+      return fileList[0]?.size <= MAX_FILE_SIZE;
     }, `Max image size is 5MB.`)
     .refine(
-      (files) => {
-        if (!files || files.length === 0) return true; // Optional
-        return ACCEPTED_IMAGE_TYPES.includes(files[0]?.type);
+      (fileList) => {
+        if (!fileList || fileList.length === 0) return true; // Optional
+        return ACCEPTED_IMAGE_TYPES.includes(fileList[0]?.type);
       },
       "Only .jpg, .jpeg, .png and .webp formats are supported."
     )
     .optional(),
   noPeopleInPhoto: z.boolean().optional().default(false),
   agreeToTerms: z.boolean().refine(val => val === true, { message: "You must agree to The Proper Porcelain Policy." }),
+  allowSocialShare: z.boolean().optional().default(false), // New field
 }).superRefine((data, ctx) => {
   if (data.photo && data.photo.length > 0 && !data.noPeopleInPhoto) {
     ctx.addIssue({
