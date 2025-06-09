@@ -1,4 +1,6 @@
 
+export const dynamic = 'force-dynamic'; // Ensures the page is dynamically rendered
+
 import React, { Suspense } from 'react';
 import ConfettiPlaceholder from '@/components/ui/ConfettiPlaceholder';
 import ThankYouContent from './ThankYouContent';
