@@ -1,7 +1,7 @@
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { DollarSign, Heart, Coffee, Users, Gift } from "lucide-react";
+import { DollarSign, Heart, Coffee, Users, Gift, Edit3, MessageSquarePlus } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import type { Metadata } from 'next';
