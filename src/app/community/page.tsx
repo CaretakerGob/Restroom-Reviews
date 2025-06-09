@@ -2,7 +2,7 @@
 export const dynamic = 'force-dynamic'; // Ensures the page is dynamically rendered
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Award, Star, Users, Construction, BadgeCheck, ShoppingBag, GalleryHorizontalEnd, Sparkles, Trophy, Zap, Eye, Shield, Crown, CheckSquare, Wrench, Gift, FileText, DollarSign } from "lucide-react"; // Replaced Mop with Wrench
+import { Award, BadgeCheck, CheckSquare, Construction, Crown, DollarSign, Eye, GalleryHorizontalEnd, Shield, ShoppingBag, Trophy, Users, Zap, Wrench, Gift, FileText } from "lucide-react"; // Ensured Mop is replaced by Wrench
 import Image from "next/image";
 import Link from "next/link";
 import { generateCommunityImage } from "@/ai/flows/generate-community-image-flow";
@@ -13,6 +13,7 @@ export default async function CommunityPage() {
   let generatedImageHint;
 
   try {
+    // This call will happen at request time due to 'force-dynamic'
     const imageResult = await generateCommunityImage({
       prompt: "A vibrant and inclusive illustration representing the 'Flush Force' community teamwork and achievement, featuring stylized characters celebrating around a sparkling clean toilet trophy. Include subtle hints of badges or awards. The style should be modern, friendly, and inviting. Avoid text in the image."
     });
@@ -21,8 +22,8 @@ export default async function CommunityPage() {
       imageAlt = "AI Generated image representing the Flush Force community teamwork and achievement";
     }
   } catch (error) {
-    console.error("Failed to generate community image:", error);
-    // Fallback to placeholder if generation fails
+    console.error("Failed to generate community image (expected during build if API key is not set, will fallback):", error);
+    // Fallback to placeholder if generation fails, e.g. during build or if API key not set at runtime
     imageDataUri = "https://placehold.co/600x300.png";
     imageAlt = "Flush Force community features placeholder - image generation failed";
     generatedImageHint = "community teamwork achievement";
@@ -55,7 +56,7 @@ export default async function CommunityPage() {
               width={600}
               height={300}
               className="rounded-lg shadow-md opacity-80"
-              priority={imageDataUri.startsWith('data:')}
+              priority={imageDataUri.startsWith('data:')} // Only prioritize if it's a generated data URI
               data-ai-hint={generatedImageHint || "community teamwork achievement"}
             />
           </div>
@@ -97,7 +98,9 @@ export default async function CommunityPage() {
                         <li><Crown size={12} className="inline mr-1" /> Toilet Titan (Top Leaderboard)</li>
                         <li><Trophy size={12} className="inline mr-1" /> Lavatory Legend (Consistent Top Ratings)</li>
                         <li><CheckSquare size={12} className="inline mr-1" /> Wipe Watcher (Report Supply Issues)</li>
-                        <li><Wrench size={12} className="inline mr-1" /> Relief Ranger (Community Cleanup)</li> {/* Replaced Mop with Wrench */}
+                        <li><Wrench size={12} className="inline mr-1" /> Relief Ranger (Community Cleanup)</li>
+                        <li><Gift size={12} className="inline mr-1" /> Plunger Patron (Donate to support a cleanup)</li>
+                        <li><FileText size={12} className="inline mr-1" /> Flush Fashionista (Purchased/Gifted Merch)</li>
                     </ul>
                      (Full tracking and display coming soon!)
                   </p>
@@ -152,3 +155,5 @@ export default async function CommunityPage() {
     </div>
   );
 }
+
+    
