@@ -49,7 +49,7 @@ export default function PorcelainRulePage() {
           
           <div className="bg-amber-100/50 dark:bg-amber-900/30 p-6 rounded-lg border border-amber-300 dark:border-amber-700">
             <h3 className="text-3xl font-headline text-secondary flex items-center gap-2">
-              <Smile className="h-8 w-8 text-secondary" /> Our Porcelain Policy (PP - PEE PEE 😉)
+              <Smile className="h-8 w-8 text-secondary" /> Our Porcelain Policy (PP)
             </h3>
             <p className="text-foreground/80 leading-relaxed mt-2 mb-4 text-md">
               Welcome to the heart of how we keep things flowing smoothly! These are our Primary Principles (PP) for community conduct. 
