@@ -4,7 +4,7 @@ import ThePorcelainRuleModal from '@/components/ThePorcelainRuleModal';
 import Link from 'next/link';
 import Image from 'next/image';
 import TestimonialSlider from '@/components/TestimonialSlider';
-import { HandHelping, Edit3, Users, MapPin, Instagram, Youtube, Info, MessageSquareText, ShieldCheck } from 'lucide-react';
+import { HandHelping, Edit3, Users, MapPin, Instagram, Youtube, Info, MessageSquareText, ShieldCheck, Film } from 'lucide-react';
 
 const TikTokIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
@@ -99,6 +99,60 @@ export default function Home() {
             <p className="text-foreground/80">Join a community dedicated to improving public restroom standards everywhere.</p>
           </div>
         </div>
+      </section>
+
+      <section className="w-full max-w-3xl pt-10">
+        <div className="flex items-center justify-center gap-2 mb-6">
+          <Film className="h-8 w-8 text-primary" />
+          <h2 className="text-3xl font-bold text-primary">Hot Off The Presses! 🚽✨</h2>
+        </div>
+        <p className="text-lg text-foreground/80 mb-8">
+          Catch our latest features, fails, and flush-worthy finds on social media!
+        </p>
+        <div className="grid md:grid-cols-2 gap-8">
+          {/* Instagram Embed Placeholder */}
+          <div className="p-4 bg-card rounded-lg shadow-lg border border-border">
+            <h3 className="font-bold text-2xl mb-3 text-accent flex items-center gap-2"><Instagram size={28}/>Featured on Instagram</h3>
+            <div className="aspect-square bg-muted rounded overflow-hidden mb-4">
+              <Image 
+                src="https://placehold.co/500x500.png" 
+                alt="Instagram Post Placeholder" 
+                width={500} 
+                height={500} 
+                className="object-cover w-full h-full"
+                data-ai-hint="social media post" 
+              />
+            </div>
+            <p className="text-sm text-foreground/70 mb-4">Check out our latest "Restroom of the Month" or a hilarious stall story highlight!</p>
+            <Button variant="outline" asChild className="w-full">
+              <a href="https://instagram.com/yourprofile" target="_blank" rel="noopener noreferrer">
+                Visit our Instagram <Instagram size={16} className="ml-2"/>
+              </a>
+            </Button>
+          </div>
+
+          {/* TikTok Embed Placeholder */}
+          <div className="p-4 bg-card rounded-lg shadow-lg border border-border">
+            <h3 className="font-bold text-2xl mb-3 text-accent flex items-center gap-2"><TikTokIcon />Trending on TikTok</h3>
+            <div className="aspect-[9/16] bg-muted rounded overflow-hidden mb-4">
+              <Image 
+                src="https://placehold.co/300x533.png" 
+                alt="TikTok Video Placeholder" 
+                width={300} 
+                height={533} 
+                className="object-cover w-full h-full"
+                data-ai-hint="short video content"
+              />
+            </div>
+            <p className="text-sm text-foreground/70 mb-4">Laugh (or cry) with our latest restroom reels, cleanup transformations, or funny fails!</p>
+            <Button variant="outline" asChild className="w-full">
+              <a href="https://tiktok.com/@yourprofile" target="_blank" rel="noopener noreferrer">
+                Watch on TikTok <TikTokIcon />
+              </a>
+            </Button>
+          </div>
+        </div>
+         <p className="text-sm text-muted-foreground mt-8">(Psst! Remember to update these links with your actual social media profiles!)</p>
       </section>
 
        <section className="w-full max-w-2xl pt-8">
