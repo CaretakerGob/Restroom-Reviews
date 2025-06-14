@@ -15,7 +15,10 @@ export default function ThankYouContent() {
     message = "Your review has been successfully submitted. Thank you for sharing your experience!";
   } else if (type === 'nomination') {
     message = "Your nomination has been successfully submitted. Thank you for helping us identify areas for improvement!";
+  } else if (type === 'social-submission') {
+    message = "Your social media post has been successfully submitted for review. Thanks for sharing with the R&R community! We'll check it out soon.";
   }
+
 
   return (
     <>
@@ -23,6 +26,11 @@ export default function ThankYouContent() {
       <Button asChild size="lg" className="shadow-md hover:shadow-lg transition-shadow">
         <Link href="/">Return to Homepage</Link>
       </Button>
+      {type === 'social-submission' && (
+         <Button asChild variant="outline" size="lg" className="mt-4 shadow-md hover:shadow-lg transition-shadow">
+            <Link href="/submit-social-review">Submit Another Post</Link>
+        </Button>
+      )}
     </>
   );
 }
