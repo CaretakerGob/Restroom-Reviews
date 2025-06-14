@@ -87,9 +87,10 @@ export default async function CommunityPage() {
                   <CardTitle className="text-xl text-accent">Lavatory Legend Badges</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-sm text-muted-foreground mb-1">
                     Earn R&R Branded Badges like:
-                    <ul className="list-disc list-inside pl-2 mt-1 text-xs">
+                  </p>
+                  <ul className="list-disc list-inside pl-2 text-xs text-muted-foreground">
                         <li><Zap size={12} className="inline mr-1" /> Throne Tester (First Review)</li>
                         <li><Users size={12} className="inline mr-1" /> Flush Force (5+ Reviews)</li>
                         <li><Shield size={12} className="inline mr-1" /> Porcelain Paladin (First Nomination Accepted)</li>
@@ -100,7 +101,8 @@ export default async function CommunityPage() {
                         <li><Wrench size={12} className="inline mr-1" /> Relief Ranger (Community Cleanup)</li>
                         <li><Gift size={12} className="inline mr-1" /> Plunger Patron (Donate to support a cleanup)</li>
                         <li><FileText size={12} className="inline mr-1" /> Flush Fashionista (Purchased/Gifted Merch)</li>
-                    </ul>
+                  </ul>
+                  <p className="text-xs text-muted-foreground mt-2">
                      (Full tracking and display coming soon!)
                   </p>
                 </CardContent>
@@ -214,5 +216,7 @@ export default async function CommunityPage() {
       </Card>
     </div>
   );
+
+    
 
     
