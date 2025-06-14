@@ -23,6 +23,7 @@ import {
   Info,
   ChevronDown,
   Contact,
+  Camera, // Added Camera icon
 } from 'lucide-react';
 import { useTheme } from '@/components/ThemeProvider';
 import {
@@ -58,6 +59,7 @@ const navGroups: NavGroup[] = [
     items: [
       { href: '/submit-review', label: 'Share Stall Story', icon: <Edit3 /> },
       { href: '/nominate-business', label: 'Nominate for Crusade', icon: <HandHelping /> },
+      { href: '/submit-social-review', label: 'Share Social Post', icon: <Camera /> }, // New link
       { href: '/anonymous-tips', label: 'Anonymous Tips', icon: <HelpCircle /> },
     ],
   },
@@ -76,7 +78,7 @@ const navGroups: NavGroup[] = [
     triggerIcon: <Info />,
     items: [
       { href: '/about', label: 'About Us', icon: <Info /> },
-      { href: '/contact', label: 'Contact', icon: <Contact /> }, 
+      { href: '/contact', label: 'Contact', icon: <Contact /> },
       { href: '/porcelain-rule', label: 'Porcelain Rules', icon: <ShieldCheck /> },
     ],
   },
