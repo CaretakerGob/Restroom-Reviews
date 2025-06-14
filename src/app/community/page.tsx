@@ -216,7 +216,6 @@ export default async function CommunityPage() {
       </Card>
     </div>
   );
-
-    
+}
 
     
