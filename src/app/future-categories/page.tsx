@@ -1,6 +1,7 @@
 
+import React from 'react';
 import type { Metadata } from 'next';
-import { Layers, Utensils, Sprout, Building, Lounge } from 'lucide-react'; // Example icons
+import { Layers, Utensils, Sprout, Building } from 'lucide-react'; // Example icons
 
 export const metadata: Metadata = {
   title: 'R&R Category Expansion Plan',
@@ -46,7 +47,7 @@ export default function CategoryExpansionPage() {
     {
       title: "Room",
       description: "Private lounges, venue restrooms, and hidden sanctuaries. We review them all.",
-      icon: <Lounge />,
+      icon: <Layers />, // Replaced with Layers as a placeholder
     },
   ];
 
