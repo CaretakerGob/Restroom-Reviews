@@ -2,7 +2,8 @@
 export const dynamic = 'force-dynamic'; // Ensures the page is dynamically rendered
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Award, BadgeCheck, CheckSquare, Construction, Crown, DollarSign, Eye, GalleryHorizontalEnd, Shield, ShoppingBag, Trophy, Users, Zap, Wrench, Gift, FileText, Package, Shirt, SparklesIcon } from "lucide-react"; // Ensured Mop is replaced by Wrench, Added Package, Shirt, SparklesIcon
+import { Button } from "@/components/ui/button";
+import { Award, BadgeCheck, CheckSquare, Construction, Crown, DollarSign, Eye, GalleryHorizontalEnd, Shield, ShoppingBag, Trophy, Users, Zap, Wrench, Gift, FileText, Package, Shirt, SparklesIcon, AirVent } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { generateCommunityImage } from "@/ai/flows/generate-community-image-flow";
@@ -13,7 +14,6 @@ export default async function CommunityPage() {
   let generatedImageHint;
 
   try {
-    // This call will happen at request time due to 'force-dynamic'
     const imageResult = await generateCommunityImage({
       prompt: "A vibrant and inclusive illustration representing the 'Flush Force' community teamwork and achievement, featuring stylized characters celebrating around a sparkling clean toilet trophy. Include subtle hints of badges or awards. The style should be modern, friendly, and inviting. Avoid text in the image."
     });
@@ -23,7 +23,6 @@ export default async function CommunityPage() {
     }
   } catch (error) {
     console.error("Failed to generate community image (expected during build if API key is not set, will fallback):", error);
-    // Fallback to placeholder if generation fails, e.g. during build or if API key not set at runtime
     imageDataUri = "https://placehold.co/600x300.png";
     imageAlt = "Flush Force community features placeholder - image generation failed";
     generatedImageHint = "community teamwork achievement";
@@ -56,7 +55,7 @@ export default async function CommunityPage() {
               width={600}
               height={300}
               className="rounded-lg shadow-md opacity-80"
-              priority={imageDataUri.startsWith('data:')} // Only prioritize if it's a generated data URI
+              priority={imageDataUri.startsWith('data:')}
               data-ai-hint={generatedImageHint || "community teamwork achievement"}
             />
           </div>
@@ -117,51 +116,82 @@ export default async function CommunityPage() {
               </Card>
               
               {/* Phase 1 Merch Drop Campaign Section */}
-              <Card className="bg-card-foreground/5 lg:col-span-3">
-                <CardHeader className="flex-row items-center gap-2 pb-2">
-                  <ShoppingBag className="h-7 w-7 text-primary" /> {/* Changed icon and color */}
-                  <CardTitle className="text-2xl text-primary">Phase 1 Merch Drop - Coming Soon!</CardTitle> {/* Enhanced title */}
+              <Card className="bg-card-foreground/10 lg:col-span-3 p-6 shadow-xl border-primary/50">
+                <CardHeader className="text-center pb-4">
+                  <CardTitle className="text-3xl font-headline text-primary flex items-center justify-center gap-2">
+                    <ShoppingBag className="h-8 w-8" /> Phase 1 Merch Drop – Flush Force Edition
+                  </CardTitle>
+                  <CardDescription className="text-md text-foreground/80 max-w-lg mx-auto">
+                    Join the movement, wear the mission. Limited early-release gear for our day-one community members. Light the match, wipe the mirror, leave it better than you found it.
+                  </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-6">
-                  <p className="text-md text-foreground/80 text-center">
-                    Gear up, Flush Force! Our first wave of official R&R merch is in production. Get ready to show your porcelain pride!
-                  </p>
-                  <div className="grid md:grid-cols-3 gap-6">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                     {/* Flush Force Gloves */}
-                    <Card className="border-border/30">
-                      <CardHeader className="p-3">
-                        <Image src="https://placehold.co/300x300.png" alt="Flush Force Gloves" width={300} height={300} className="rounded-md object-cover" data-ai-hint="nitrile gloves" />
+                    <Card className="border-border/30 flex flex-col items-center">
+                      <CardHeader className="p-3 w-full">
+                        <div className="relative w-full aspect-square">
+                          <Image src="https://placehold.co/300x300.png" alt="Flush Force Gloves" fill className="rounded-md object-cover" data-ai-hint="nitrile gloves box" />
+                        </div>
                       </CardHeader>
-                      <CardContent className="p-3 pt-0 text-center">
-                        <h4 className="font-semibold text-lg text-accent flex items-center justify-center gap-1"><Package size={18}/> "Flush Force" Gloves</h4>
-                        <p className="text-xs text-muted-foreground">Black nitrile gloves with branded sleeve wrap. Ready for any mission.</p>
+                      <CardContent className="p-3 pt-0 text-center flex-grow flex flex-col justify-between w-full">
+                        <div>
+                          <h4 className="font-semibold text-lg text-accent flex items-center justify-center gap-1"><Package size={18}/> Flush Force Gloves</h4>
+                          <p className="text-xs text-muted-foreground mt-1">Black nitrile gloves with an R&R seal wrap band. Sanitary, stylish, savage.</p>
+                        </div>
+                        <Button variant="secondary" size="sm" className="mt-3 w-full" disabled>Coming Soon</Button>
                       </CardContent>
                     </Card>
                     {/* Wipe Warrior Shirts */}
-                    <Card className="border-border/30">
-                       <CardHeader className="p-3">
-                        <Image src="https://placehold.co/300x300.png" alt="Wipe Warrior Shirt" width={300} height={300} className="rounded-md object-cover" data-ai-hint="minimalist tee" />
+                    <Card className="border-border/30 flex flex-col items-center">
+                       <CardHeader className="p-3 w-full">
+                        <div className="relative w-full aspect-square">
+                          <Image src="https://placehold.co/300x300.png" alt="Wipe Warrior Tee" fill className="rounded-md object-cover" data-ai-hint="minimalist white tee" />
+                        </div>
                       </CardHeader>
-                      <CardContent className="p-3 pt-0 text-center">
-                        <h4 className="font-semibold text-lg text-accent flex items-center justify-center gap-1"><Shirt size={18}/> "Wipe Warrior" Tee</h4>
-                        <p className="text-xs text-muted-foreground">Minimalist embroidered tee. Subtle style, maximum impact.</p>
+                      <CardContent className="p-3 pt-0 text-center flex-grow flex flex-col justify-between w-full">
+                        <div>
+                          <h4 className="font-semibold text-lg text-accent flex items-center justify-center gap-1"><Shirt size={18}/> Wipe Warrior Tee</h4>
+                          <p className="text-xs text-muted-foreground mt-1">Minimalist white tee with the “Porcelain Rule Enforcer” seal. Soft, breathable, battle-ready.</p>
+                        </div>
+                        <Button variant="secondary" size="sm" className="mt-3 w-full" disabled>Coming Soon</Button>
                       </CardContent>
                     </Card>
-                    {/* Mirror Minder Stickers */}
-                    <Card className="border-border/30">
-                       <CardHeader className="p-3">
-                        <Image src="https://placehold.co/300x300.png" alt="Mirror Minder Stickers" width={300} height={300} className="rounded-md object-cover" data-ai-hint="sticker sheet" />
+                    {/* Certified Clean Stickers */}
+                    <Card className="border-border/30 flex flex-col items-center">
+                       <CardHeader className="p-3 w-full">
+                        <div className="relative w-full aspect-square">
+                          <Image src="https://placehold.co/300x300.png" alt="Certified Clean Sticker Pack" fill className="rounded-md object-cover" data-ai-hint="sticker sheet icons" />
+                        </div>
                       </CardHeader>
-                      <CardContent className="p-3 pt-0 text-center">
-                        <h4 className="font-semibold text-lg text-accent flex items-center justify-center gap-1"><SparklesIcon size={18}/> "Mirror Minder" Stickers</h4>
-                        <p className="text-xs text-muted-foreground">"I wiped this mirror. Did you?" Spread the sparkle!</p>
+                      <CardContent className="p-3 pt-0 text-center flex-grow flex flex-col justify-between w-full">
+                        <div>
+                          <h4 className="font-semibold text-lg text-accent flex items-center justify-center gap-1"><SparklesIcon size={18}/> Certified Clean Sticker Pack</h4>
+                          <p className="text-xs text-muted-foreground mt-1">8-pack of waterproof vinyl badge icons including Flush Force, Stall Sentinel, and Toilet Titan.</p>
+                        </div>
+                        <Button variant="secondary" size="sm" className="mt-3 w-full" disabled>Coming Soon</Button>
+                      </CardContent>
+                    </Card>
+                     {/* Flush Force Freshener */}
+                    <Card className="border-border/30 flex flex-col items-center">
+                       <CardHeader className="p-3 w-full">
+                        <div className="relative w-full aspect-square">
+                          <Image src="https://placehold.co/300x300.png" alt="Flush Force Air Freshener" fill className="rounded-md object-cover" data-ai-hint="car air freshener" />
+                        </div>
+                      </CardHeader>
+                      <CardContent className="p-3 pt-0 text-center flex-grow flex flex-col justify-between w-full">
+                        <div>
+                          <h4 className="font-semibold text-lg text-accent flex items-center justify-center gap-1"><AirVent size={18}/> Flush Force Freshener</h4>
+                          <p className="text-xs text-muted-foreground mt-1">Mint-orange blend. Hangs proud. Smells like justice.</p>
+                        </div>
+                        <Button variant="secondary" size="sm" className="mt-3 w-full" disabled>Coming Soon</Button>
                       </CardContent>
                     </Card>
                   </div>
-                   <p className="text-sm text-muted-foreground text-center pt-4">
-                    Also keep an eye out for other future drops: Air Fresheners, "Toilet Titan" Shirts, Volunteer Tees, Holographic Badges, and the “Flush Fashion” Zine!
+                   <p className="text-sm text-muted-foreground text-center pt-6">
+                    Future drops may include: Volunteer Tees, Holographic Badges, and the “Flush Fashion” Zine!
                   </p>
-                  <p className="text-xs text-foreground/60 text-center mt-2">(Actual merch store and designs coming soon!)</p>
+                  <p className="text-xs text-foreground/60 text-center mt-2">(Actual merch store and final designs are on the way!)</p>
                 </CardContent>
               </Card>
 
@@ -184,6 +214,5 @@ export default async function CommunityPage() {
       </Card>
     </div>
   );
-}
 
     
