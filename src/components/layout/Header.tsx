@@ -23,7 +23,7 @@ import {
   Info,
   ChevronDown,
   Contact,
-  Camera, // Added Camera icon
+  Camera,
 } from 'lucide-react';
 import { useTheme } from '@/components/ThemeProvider';
 import {
@@ -57,21 +57,21 @@ const navGroups: NavGroup[] = [
     triggerLabel: 'Contribute',
     triggerIcon: <Edit3 />,
     items: [
-      { href: '/submit-review', label: 'Share Stall Story', icon: <Edit3 /> },
-      { href: '/nominate-business', label: 'Nominate for Crusade', icon: <HandHelping /> },
-      { href: '/submit-social-review', label: 'Share Social Post', icon: <Camera /> }, // New link
       { href: '/anonymous-tips', label: 'Anonymous Tips', icon: <HelpCircle /> },
-    ],
+      { href: '/nominate-business', label: 'Nominate for Crusade', icon: <HandHelping /> },
+      { href: '/submit-social-review', label: 'Share Social Post', icon: <Camera /> },
+      { href: '/submit-review', label: 'Share Stall Story', icon: <Edit3 /> },
+    ].sort((a, b) => a.label.localeCompare(b.label)),
   },
   {
     triggerLabel: 'Explore',
     triggerIcon: <ListChecks />,
     items: [
-      { href: '/reviews', label: 'Wall of Thrones', icon: <ListChecks /> },
+      { href: '/blog', label: 'Bathroom Buzz', icon: <MessageSquareText /> },
       { href: '/community', label: 'Flush Force HQ', icon: <Users /> },
       { href: '/videos', label: 'Restroom Reels', icon: <Film /> },
-      { href: '/blog', label: 'Bathroom Buzz', icon: <MessageSquareText /> },
-    ],
+      { href: '/reviews', label: 'Wall of Thrones', icon: <ListChecks /> },
+    ].sort((a, b) => a.label.localeCompare(b.label)),
   },
   {
     triggerLabel: 'Info',
@@ -80,7 +80,7 @@ const navGroups: NavGroup[] = [
       { href: '/about', label: 'About Us', icon: <Info /> },
       { href: '/contact', label: 'Contact', icon: <Contact /> },
       { href: '/porcelain-rule', label: 'Porcelain Rules', icon: <ShieldCheck /> },
-    ],
+    ].sort((a, b) => a.label.localeCompare(b.label)),
   },
 ];
 
