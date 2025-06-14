@@ -60,7 +60,7 @@ const navGroups: NavGroup[] = [
       { href: '/anonymous-tips', label: 'Anonymous Tips', icon: <HelpCircle /> },
       { href: '/nominate-business', label: 'Nominate for Crusade', icon: <HandHelping /> },
       { href: '/submit-social-review', label: 'Share Social Post', icon: <Camera /> },
-      { href: '/submit-review', label: 'Share Stall Story', icon: <Edit3 /> },
+      { href: '/submit-review', label: 'Write a Full R&R Review', icon: <Edit3 /> },
     ].sort((a, b) => a.label.localeCompare(b.label)),
   },
   {
