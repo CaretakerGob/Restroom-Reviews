@@ -2,7 +2,7 @@
 export const dynamic = 'force-dynamic'; // Ensures the page is dynamically rendered
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Award, BadgeCheck, CheckSquare, Construction, Crown, DollarSign, Eye, GalleryHorizontalEnd, Shield, ShoppingBag, Trophy, Users, Zap, Wrench, Gift, FileText } from "lucide-react"; // Ensured Mop is replaced by Wrench
+import { Award, BadgeCheck, CheckSquare, Construction, Crown, DollarSign, Eye, GalleryHorizontalEnd, Shield, ShoppingBag, Trophy, Users, Zap, Wrench, Gift, FileText, Package, Shirt, SparklesIcon } from "lucide-react"; // Ensured Mop is replaced by Wrench, Added Package, Shirt, SparklesIcon
 import Image from "next/image";
 import Link from "next/link";
 import { generateCommunityImage } from "@/ai/flows/generate-community-image-flow";
@@ -115,26 +115,56 @@ export default async function CommunityPage() {
                   <p className="text-sm text-muted-foreground">Witness the transformations! A gallery showcasing before & after photos of restrooms revitalized through the "Cleanup Crusade" program, thanks to community nominations. Option to “Nominate Again” if standards slip. (Coming Soon!)</p>
                 </CardContent>
               </Card>
+              
+              {/* Phase 1 Merch Drop Campaign Section */}
               <Card className="bg-card-foreground/5 lg:col-span-3">
                 <CardHeader className="flex-row items-center gap-2 pb-2">
-                  <ShoppingBag className="h-6 w-6 text-accent" />
-                  <CardTitle className="text-xl text-accent">Porcelain Provisions Vol. 1 (Merch!)</CardTitle>
+                  <ShoppingBag className="h-7 w-7 text-primary" /> {/* Changed icon and color */}
+                  <CardTitle className="text-2xl text-primary">Phase 1 Merch Drop - Coming Soon!</CardTitle> {/* Enhanced title */}
                 </CardHeader>
-                <CardContent>
-                  <p className="text-sm text-muted-foreground">
-                    Get ready for "Porcelain Provisions"! Future drops might include:
+                <CardContent className="space-y-6">
+                  <p className="text-md text-foreground/80 text-center">
+                    Gear up, Flush Force! Our first wave of official R&R merch is in production. Get ready to show your porcelain pride!
                   </p>
-                  <ul className="list-disc list-inside text-sm text-muted-foreground pl-4 mt-2 space-y-1">
-                    <li><strong>Sticker Packs:</strong> "Certified Clean by R&R" + Badge Icons (Throne Tester, Paladin, Titan).</li>
-                    <li><strong>Air Fresheners:</strong> Flush Force (Orange + Mint - "Smells like victory"), "This Stall Was Rated".</li>
-                    <li><strong>Shirts:</strong> "Toilet Titan" (Golden toilet chest print; Back: “We review where you do the doo.”), "Flush Or Fail," "Porcelain Rule Enforcer."</li>
-                    <li><strong>Volunteer Tee:</strong> “Cleanup Crew” / “Relief Ranger”.</li>
-                    <li><strong>Holographic Badge Decals:</strong> Collectible foil versions of your favorite badges.</li>
-                    <li><strong>“Flush Fashion” Zine:</strong> Mini comic/storybook with R&R lore and badge origins.</li>
-                  </ul>
-                  <p className="text-xs text-muted-foreground mt-2">(Merch store coming soon!)</p>
+                  <div className="grid md:grid-cols-3 gap-6">
+                    {/* Flush Force Gloves */}
+                    <Card className="border-border/30">
+                      <CardHeader className="p-3">
+                        <Image src="https://placehold.co/300x300.png" alt="Flush Force Gloves" width={300} height={300} className="rounded-md object-cover" data-ai-hint="nitrile gloves" />
+                      </CardHeader>
+                      <CardContent className="p-3 pt-0 text-center">
+                        <h4 className="font-semibold text-lg text-accent flex items-center justify-center gap-1"><Package size={18}/> "Flush Force" Gloves</h4>
+                        <p className="text-xs text-muted-foreground">Black nitrile gloves with branded sleeve wrap. Ready for any mission.</p>
+                      </CardContent>
+                    </Card>
+                    {/* Wipe Warrior Shirts */}
+                    <Card className="border-border/30">
+                       <CardHeader className="p-3">
+                        <Image src="https://placehold.co/300x300.png" alt="Wipe Warrior Shirt" width={300} height={300} className="rounded-md object-cover" data-ai-hint="minimalist tee" />
+                      </CardHeader>
+                      <CardContent className="p-3 pt-0 text-center">
+                        <h4 className="font-semibold text-lg text-accent flex items-center justify-center gap-1"><Shirt size={18}/> "Wipe Warrior" Tee</h4>
+                        <p className="text-xs text-muted-foreground">Minimalist embroidered tee. Subtle style, maximum impact.</p>
+                      </CardContent>
+                    </Card>
+                    {/* Mirror Minder Stickers */}
+                    <Card className="border-border/30">
+                       <CardHeader className="p-3">
+                        <Image src="https://placehold.co/300x300.png" alt="Mirror Minder Stickers" width={300} height={300} className="rounded-md object-cover" data-ai-hint="sticker sheet" />
+                      </CardHeader>
+                      <CardContent className="p-3 pt-0 text-center">
+                        <h4 className="font-semibold text-lg text-accent flex items-center justify-center gap-1"><SparklesIcon size={18}/> "Mirror Minder" Stickers</h4>
+                        <p className="text-xs text-muted-foreground">"I wiped this mirror. Did you?" Spread the sparkle!</p>
+                      </CardContent>
+                    </Card>
+                  </div>
+                   <p className="text-sm text-muted-foreground text-center pt-4">
+                    Also keep an eye out for other future drops: Air Fresheners, "Toilet Titan" Shirts, Volunteer Tees, Holographic Badges, and the “Flush Fashion” Zine!
+                  </p>
+                  <p className="text-xs text-foreground/60 text-center mt-2">(Actual merch store and designs coming soon!)</p>
                 </CardContent>
               </Card>
+
                <Card className="bg-card-foreground/5 lg:col-span-3">
                 <CardHeader className="flex-row items-center gap-2 pb-2">
                   <DollarSign className="h-6 w-6 text-accent" />
