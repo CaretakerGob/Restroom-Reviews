@@ -182,7 +182,7 @@ export default function AdminPage() {
               </Alert>
             )}
             <p className="text-xs text-muted-foreground pt-2">
-              Note: This is a basic client-side password protection. For production, ensure proper server-side authentication (e.g., Firebase Authentication). The password currently used ('{ADMIN_ACCESS_PASSWORD}') is for early testing.
+              Note: This is a basic client-side password protection. For production, ensure proper server-side authentication (e.g., Firebase Authentication).
             </p>
           </CardContent>
           <CardFooter>
